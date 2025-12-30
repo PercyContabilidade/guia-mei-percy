@@ -1,396 +1,99 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <meta property="og:title" content="Simulador DAS - Percy Contabilidade">
-    <meta property="og:description" content="Aprenda a emitir seu DAS MEI com segurança. Ferramenta oficial da Percy Contabilidade.">
-    <meta property="og:image" content="https://percycontabilidade.github.io/guia-mei-percy/logopercyatual.jpeg">
-    <meta property="og:image:type" content="image/jpeg">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://percycontabilidade.github.io/guia-mei-percy/simulador.html">
-
-    <title>Simulador DAS - Percy Contabilidade</title>
+    <title>Simulador de Impostos MEI - Percy Contabilidade</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         :root {
-            --primary-wine: #5e1914;
-            --primary-gold: #c5a059;
-            --bg-light: #F4F4F9;
-            --text-dark: #333;
-            --white: #ffffff;
+            --primary-color: #1a1a1a;
+            --accent-color: #d4af37;
         }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-light);
-            margin: 0;
-            padding: 0;
-            color: var(--text-dark);
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
+        body { font-family: 'Inter', sans-serif; background-color: #f3f4f6; }
+        .card-vip { background: white; border-radius: 1.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .input-percy { border: 2px solid #e5e7eb; border-radius: 0.75rem; padding: 0.75rem; width: 100%; focus: border-[#d4af37]; }
+        .btn-calc { background-color: var(--accent-color); color: #1a1a1a; font-weight: bold; transition: 0.3s; }
+        .btn-calc:hover { background-color: #b79148; transform: scale(1.02); }
+        .btn-return { 
+            background-color: #1a1a1a; 
+            color: var(--accent-color); 
+            border: 2px solid var(--accent-color);
+            transition: 0.3s;
         }
-
-        header {
-            background-color: var(--white);
-            border-bottom: 4px solid var(--primary-wine);
-            padding: 2rem 1rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-
-        .logo-container { display: flex; align-items: center; justify-content: center; }
-        .logo-img { height: 80px; width: auto; }
-
-        .user-area {
-            font-size: 1.1rem;
-            color: var(--primary-wine);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .container {
-            display: flex;
-            flex: 1;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-            gap: 2rem;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        .main-content {
-            flex: 3;
-            background: var(--white);
-            border-radius: 12px;
-            padding: 2rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            min-height: 400px;
-        }
-
-        .sidebar {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .card {
-            background: var(--white);
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            border-left: 5px solid var(--primary-gold);
-        }
-
-        .card h3 { margin-top: 0; color: var(--primary-wine); font-size: 1.1rem; }
-
-        .highlight-date {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: var(--text-dark);
-            text-align: center;
-            margin: 10px 0;
-        }
-
-        .btn-whatsapp {
-            background-color: #25D366;
-            color: white;
-            text-decoration: none;
-            display: block;
-            text-align: center;
-            padding: 12px;
-            border-radius: 8px;
-            font-weight: bold;
-            transition: transform 0.2s;
-            margin-top: 10px;
-        }
-        .btn-whatsapp:hover { transform: scale(1.02); }
-
-        .step-container { text-align: center; padding: 2rem 0; }
-
-        .pgmei-mockup {
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 20px;
-            background: #f9f9f9;
-            margin: 20px auto;
-            max-width: 500px;
-            text-align: left;
-        }
-
-        .input-group label { display: block; margin-bottom: 5px; font-size: 0.9rem; color: #666; }
-        .fake-input { width: 95%; height: 40px; border: 1px solid #ccc; border-radius: 4px; background: white; padding-left: 10px;}
-
-        .btn-action {
-            background-color: var(--primary-wine);
-            color: white;
-            border: none;
-            padding: 15px 40px;
-            font-size: 1.1rem;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: background 0.3s;
-            margin-top: 20px;
-            box-shadow: 0 4px 10px rgba(94, 25, 20, 0.3);
-            font-weight: bold;
-        }
-        .btn-action:hover { background-color: #4a120e; }
-
-        .progress-bar { display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; }
-        .dot { width: 12px; height: 12px; background: #ddd; border-radius: 50%; }
-        .dot.active { background: var(--primary-gold); }
-
-        /* Estilo Interativo para as Linhas */
-        .check-row {
-            display: flex; 
-            justify-content: space-between; 
-            padding: 15px; 
-            background-color: #fff; /* Começa branco */
-            border-bottom: 1px solid #eee;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-        .check-row:hover { background-color: #f0f0f0; }
-        
-        /* Destaque quando selecionado */
-        .check-row.selected {
-            background-color: #fffbea;
-            border: 1px solid #e0d0a0;
-            border-radius: 6px;
-        }
-
-        .consult-btn {
-            background-color: #eee;
-            color: #555;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            border: 1px solid #ccc;
-        }
-
-        footer {
-            text-align: center;
-            padding: 1.5rem;
-            color: #888;
-            font-size: 0.9rem;
-            border-top: 1px solid #ddd;
-            background: var(--white);
-        }
-
-        @media (max-width: 768px) {
-            .container { flex-direction: column; padding: 1rem; }
-            .sidebar { order: 2; } 
-            .logo-img { height: 60px; }
-            .user-area { font-size: 1rem; }
-        }
+        .btn-return:hover { background-color: var(--accent-color); color: #1a1a1a; }
     </style>
 </head>
-<body>
+<body class="py-12 px-4 min-h-screen flex flex-col items-center">
 
-    <header>
-        <div class="logo-container">
-            <img src="logopercyatual.jpeg" alt="Logo Percy Contabilidade" class="logo-img">
+    <div class="card-vip w-full max-w-md p-8">
+        <div class="text-center mb-8">
+            <img src="logopercyatual.jpeg" alt="Logo Percy" class="mx-auto w-24 rounded-full mb-4 border-2 border-[#d4af37]">
+            <h1 class="text-2xl font-bold text-gray-800">Simulador de Economia</h1>
+            <p class="text-gray-500 text-sm">Compare MEI vs Pessoa Física</p>
         </div>
-        <div class="user-area">
-            MEI - Simulador Educativo
+
+        <div class="space-y-6">
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Faturamento Mensal (R$)</label>
+                <input type="number" id="faturamento" placeholder="Ex: 5000" class="input-percy">
+            </div>
+
+            <button onclick="calcularSimulacao()" class="btn-calc w-full py-4 rounded-xl shadow-lg">
+                SIMULAR ECONOMIA AGORA
+            </button>
+
+            <div id="resultado" class="hidden bg-gray-50 p-6 rounded-2xl border-l-4 border-[#d4af37]">
+                <p class="text-sm text-gray-600 mb-1">Como Pessoa Física você pagaria aprox.:</p>
+                <p id="pf-tax" class="text-xl font-bold text-red-600 mb-4">R$ 0,00</p>
+                
+                <p class="text-sm text-gray-600 mb-1">Como MEI você paga apenas:</p>
+                <p id="mei-tax" class="text-xl font-bold text-green-600 mb-4">R$ 76,60*</p>
+                
+                <div class="bg-green-100 p-3 rounded-lg text-center">
+                    <p class="text-green-800 font-bold">Economia Mensal: <span id="economia">R$ 0,00</span></p>
+                </div>
+            </div>
+
+            <div id="cta-simulador" class="hidden pt-4">
+                <a href="https://wa.me/5521985518475" target="_blank" class="block w-full text-center bg-green-600 text-white font-bold py-3 rounded-xl hover:bg-green-700 transition">
+                    Falar com Especialista
+                </a>
+            </div>
+
+            <div class="pt-6 border-t border-gray-100">
+                <button onclick="irParaHome()" class="btn-return w-full py-3 rounded-xl font-semibold flex items-center justify-center gap-2">
+                    <span>⬅️</span> Menu Principal
+                </button>
+            </div>
         </div>
-    </header>
-
-    <div class="container">
-        <main class="main-content" id="simulator-area"></main>
-
-        <aside class="sidebar">
-            <div class="card">
-                <h3>📅 Vencimento do DAS</h3>
-                <div class="highlight-date" id="sidebar-date">20/MÊS</div>
-                <p style="font-size: 0.85rem; color: #666; text-align: center;">Evite Juros e Multa.</p>
-            </div>
-
-            <div class="card" style="border-left-color: var(--primary-wine);">
-                <h3>🚧 Regularização (Alvará)</h3>
-                <p style="font-size: 0.9rem;">Seu MEI precisa de Inscrição Municipal ou Viabilidade na Prefeitura (Regin/Jucerja)?</p>
-                <p style="font-size: 0.8rem; color: #666;">Evite problemas de fiscalização em Nova Iguaçu.</p>
-                <a href="https://wa.me/5521974465706?text=Ola,%20preciso%20verificar%20minha%20Viabilidade%20e%20Inscricao%20Municipal" class="btn-whatsapp" style="background-color: var(--primary-wine);">Regularizar Agora</a>
-            </div>
-
-            <div class="card">
-                <h3>Precisa de ajuda?</h3>
-                <a href="https://wa.me/5521974465706?text=Ola,%20estou%20no%20Simulador%20e%20tenho%20duvida" class="btn-whatsapp">Fale com Cafter Percy 💬</a>
-            </div>
-        </aside>
     </div>
 
-    <footer>
-        © 2024 Percy Contabilidade | Projeto <strong>Cheguei, Sou MEI</strong><br>
-        Negócios Inteligentes
-    </footer>
+    <audio id="percySound" src="https://percycontabilidade.github.io/guia-mei-percy/marca-percy.mp3"></audio>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        function calcularSimulacao() {
+            const faturamento = document.getElementById('faturamento').value;
+            if(!faturamento) { alert("Por favor, digite o faturamento."); return; }
+
+            // Cálculo simplificado de Carnê Leão/IRPF (Aprox 15% acima da faixa)
+            let impostoPF = faturamento * 0.15;
+            if(faturamento < 2259) impostoPF = 0;
+
+            document.getElementById('pf-tax').innerText = `R$ ${impostoPF.toFixed(2)}`;
+            document.getElementById('economia').innerText = `R$ ${(impostoPF - 76.60).toFixed(2)}`;
             
-            const mainArea = document.getElementById('simulator-area');
-            const sidebarDate = document.getElementById('sidebar-date');
-            
-            let step = 0;
-            let savedCNPJ = "";
+            document.getElementById('resultado').classList.remove('hidden');
+            document.getElementById('cta-simulador').classList.remove('hidden');
+        }
 
-            const today = new Date();
-            const months = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
-            const currentMonthName = months[today.getMonth()];
-            const currentYear = today.getFullYear();
-            
-            sidebarDate.innerHTML = `20/${currentMonthName.substring(0,3).toUpperCase()}`;
-
-            const steps = [
-                {
-                    html: `
-                        <div class="step-container">
-                            <h2 style="color: var(--primary-wine);">Aprenda a emitir seu DAS</h2>
-                            <p>O site da Receita Federal pode parecer complicado, mas não é.<br>Use nosso simulador para treinar sem medo de errar.</p>
-                            <br>
-                            <div style="font-size: 40px;">🏦 ➡️ 🧾</div>
-                            <br>
-                            <button class="btn-action" onclick="nextStep()">Iniciar Simulação</button>
-                        </div>
-                    `
-                },
-                {
-                    html: `
-                        <div class="progress-bar"><div class="dot active"></div><div class="dot"></div><div class="dot"></div></div>
-                        <div class="step-container">
-                            <h3>Passo 1: O CNPJ</h3>
-                            <p>No PGMEI (Programa Gerador), digite apenas os números.</p>
-                            <div class="pgmei-mockup">
-                                <div class="input-group">
-                                    <label>CNPJ Completo:</label>
-                                    <input type="text" id="input-cnpj" class="fake-input" placeholder="Digite seu CNPJ aqui..." maxlength="18">
-                                </div>
-                                <small>🔒 Ambiente Seguro Percy (Dados não são salvos)</small>
-                            </div>
-                            <button class="btn-action" onclick="nextStep()">Continuar ➤</button>
-                        </div>
-                    `
-                },
-                {
-                    // PASSO 2 AGORA COM LINHA ATIVA "CONSULTAR"
-                    html: `
-                        <div class="progress-bar"><div class="dot"></div><div class="dot active"></div><div class="dot"></div></div>
-                        <div class="step-container">
-                            <h3>Passo 2: Escolha o Período</h3>
-                            <p>Selecione se deseja pagar o mês atual ou verificar pendências antigas.<br>Em seguida clique em <strong>Gerar Boleto</strong>.</p>
-                            <div class="pgmei-mockup">
-                                
-                                <div class="check-row" onclick="toggleCheck(this)">
-                                    <div style="display:flex; gap:10px; align-items:center;">
-                                        <input type="checkbox"> 
-                                        <span>Competências Anteriores</span>
-                                    </div>
-                                    <span class="consult-btn">CONSULTAR 🔍</span>
-                                </div>
-
-                                <div class="check-row selected" onclick="toggleCheck(this)">
-                                    <div style="display:flex; gap:10px; align-items:center;">
-                                        <input type="checkbox" checked> 
-                                        <span style="font-weight:bold;">${currentMonthName}/${currentYear}</span>
-                                    </div>
-                                    <span style="color:red; font-weight:bold;">A Vencer ☒</span>
-                                </div>
-
-                            </div>
-                            <button class="btn-action" onclick="nextStep()">Gerar Boleto (DAS) ➤</button>
-                        </div>
-                    `
-                },
-                {
-                    html: `
-                         <div class="progress-bar"><div class="dot"></div><div class="dot"></div><div class="dot active"></div></div>
-                        <div class="step-container">
-                            <h2 style="color: var(--primary-wine);">Agora é "à vera"! 🚀</h2>
-                            <p>Você treinou e viu que não é um bicho de sete cabeças.<br>Agora, como você prefere gerar o boleto <strong>REAL</strong>?</p>
-                            
-                            <div style="display:flex; flex-direction:column; gap:15px; margin-top:20px;">
-                                <div style="border:1px solid #ddd; padding:15px; border-radius:8px; background:white;">
-                                    <strong>Opção A: Quero fazer sozinho</strong><br>
-                                    <span style="font-size:0.9rem; color:#666;">Copiamos seu CNPJ. Basta colar no site oficial.</span>
-                                    <br>
-                                    <button onclick="copyAndGo()" class="btn-action" style="background-color:#444; width:100%; margin-top:10px;">Copiar CNPJ e Ir para Site Oficial 🏛️</button>
-                                </div>
-
-                                <div style="border:1px solid var(--primary-gold); padding:15px; border-radius:8px; background:#fffdf5;">
-                                    <strong>Opção B: Quero Consultoria VIP</strong><br>
-                                    <span style="font-size:0.9rem; color:#666;">Medo de errar ou tem pendências antigas? Nós resolvemos.</span>
-                                    <br>
-                                    <a href="https://wa.me/5521974465706?text=Ola,%20fiz%20o%20simulador%20e%20quero%20ajuda%20para%20regularizar%20meu%20DAS" class="btn-action" style="text-decoration:none; display:block; margin-top:10px; font-size:1rem;">Chamar a Percy no Zap 💬</a>
-                                </div>
-                            </div>
-
-                            <br>
-                            <button onclick="location.reload()" style="background:none; border:none; color:#666; cursor:pointer; margin-top:10px;">⟳ Quero treinar novamente</button>
-                        </div>
-                    `
-                }
-            ];
-
-            window.nextStep = function() {
-                if (step === 1) {
-                    const inputElement = document.getElementById('input-cnpj');
-                    if(inputElement) {
-                        savedCNPJ = inputElement.value;
-                    }
-                }
-                if (step < steps.length - 1) {
-                    step++;
-                    renderStep();
-                }
-            };
-
-            window.copyAndGo = function() {
-                if(savedCNPJ) {
-                    navigator.clipboard.writeText(savedCNPJ).then(function() {
-                        alert("CNPJ Copiado! ✅\n\nAgora basta COLAR no campo do site da Receita.");
-                        window.open("http://www8.receita.fazenda.gov.br/SimplesNacional/Aplicacoes/ATSPO/pgmei.app/Identificacao", "_blank");
-                    }, function() {
-                        window.open("http://www8.receita.fazenda.gov.br/SimplesNacional/Aplicacoes/ATSPO/pgmei.app/Identificacao", "_blank");
-                    });
-                } else {
-                    window.open("http://www8.receita.fazenda.gov.br/SimplesNacional/Aplicacoes/ATSPO/pgmei.app/Identificacao", "_blank");
-                }
-            };
-
-            window.toggleCheck = function(row) {
-                const checkbox = row.querySelector('input[type="checkbox"]');
-                checkbox.checked = !checkbox.checked;
-                
-                // Remove a classe 'selected' de todos
-                const allRows = document.querySelectorAll('.check-row');
-                allRows.forEach(r => {
-                    r.classList.remove('selected');
-                    r.style.backgroundColor = "#fff";
-                    // Desmarca os outros para parecer "Radio Button" (só um por vez) ou deixa múltiplo?
-                    // Vamos deixar visualmente focado no que clicou
-                });
-
-                if(checkbox.checked) {
-                    row.classList.add('selected');
-                    row.style.backgroundColor = "#fffbea";
-                }
-            };
-
-            function renderStep() {
-                mainArea.innerHTML = steps[step].html;
-            }
-
-            renderStep();
-        });
+        function irParaHome() {
+            const som = document.getElementById('percySound');
+            som.play();
+            setTimeout(() => {
+                window.location.href = "https://percycontabilidade.github.io/consultoria/";
+            }, 1200);
+        }
     </script>
 </body>
 </html>
