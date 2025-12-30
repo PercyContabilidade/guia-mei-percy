@@ -1,463 +1,82 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ficha de Registro de Funcionários - Percy Contabilidade</title>
+    <title>Ficha de Cadastro - Percy Contabilidade</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f3f4f6;
+        :root {
+            --primary-color: #1a1a1a;
+            --accent-color: #d4af37;
         }
-        .form-container {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 2rem;
-            background-color: #ffffff;
-            border-radius: 1rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        body { font-family: 'Inter', sans-serif; background-color: #f4f4f4; }
+        .form-container { background: white; border-radius: 1.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .input-field { border: 1px solid #ddd; border-radius: 0.5rem; padding: 0.75rem; width: 100%; transition: 0.3s; }
+        .input-field:focus { border-color: var(--accent-color); outline: none; ring: 2px solid #d4af37; }
+        .btn-send { background-color: var(--primary-color); color: var(--accent-color); transition: 0.3s; }
+        .btn-send:hover { background-color: #333; transform: translateY(-2px); }
+        .btn-return { 
+            background-color: transparent; 
+            color: #666; 
+            border: 1px solid #ddd;
+            transition: 0.3s;
         }
-        .form-group label {
-            color: #4b5563;
-        }
-        .form-group input, .form-group select, .form-group textarea {
-            border-color: #d1d5db;
-        }
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-            border-color: #8b5cf6;
-            ring: 1px;
-            ring-color: #8b5cf6;
-        }
+        .btn-return:hover { background-color: #eee; color: #1a1a1a; }
     </style>
 </head>
-<body>
+<body class="py-12 px-4">
 
-    <div class="form-container">
-        <div class="flex flex-col items-center mb-8">
-            <img src="logopercyatual.jpeg" alt="Logotipo da Percy Contabilidade" class="mb-4 w-40 h-auto">
-            <h1 class="text-3xl font-bold text-center text-gray-800">FICHA DE REGISTRO DE FUNCIONÁRIOS</h1>
-            <h2 class="text-lg font-medium text-center text-gray-600">Percy Contabilidade - Negócios Inteligentes</h2>
+    <div class="max-w-xl mx-auto form-container p-8 md:p-12">
+        <div class="text-center mb-10">
+            <img src="logopercyatual.jpeg" alt="Logo Percy" class="mx-auto w-24 rounded-full mb-4 border-2 border-[#d4af37]">
+            <h1 class="text-2xl font-bold text-gray-800">Ficha de Cadastro</h1>
+            <p class="text-gray-500 text-sm">Preencha os dados para iniciarmos sua jornada inteligente.</p>
         </div>
 
-        <p class="mb-6 text-sm text-gray-700">
-            Para a efetivação da contratação, o **candidato** deverá preencher os dados a seguir. A empresa contratante deverá, posteriormente, conferir com os documentos originais.
-        </p>
-
-        <form id="employeeForm" class="space-y-6">
-
-            <div class="mt-4 w-full grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                    <label for="empresa" class="block text-sm font-medium mb-1 text-center text-gray-700">Empresa Contratante</label>
-                    <input type="text" id="empresa" name="empresa" class="w-full px-4 py-2 border rounded-md focus:outline-none text-center" placeholder="Preencha com a Razão Social da empresa" required>
-                </div>
-                <div>
-                    <label for="whatsappEmpresa" class="block text-sm font-medium mb-1 text-center text-gray-700">WhatsApp da Empresa</label>
-                    <input type="tel" id="whatsappEmpresa" name="whatsappEmpresa" class="w-full px-4 py-2 border rounded-md focus:outline-none text-center" placeholder="(XX) XXXXX-XXXX" required>
-                </div>
+        <form class="space-y-5">
+            <div>
+                <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Nome Completo</label>
+                <input type="text" placeholder="Seu nome" class="input-field">
             </div>
-            <fieldset class="border-t border-gray-300 pt-6">
-                <legend class="text-xl font-semibold mb-4 text-gray-800">1. DADOS CADASTRAIS</legend>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="form-group md:col-span-2">
-                        <label for="nome" class="block text-sm font-medium mb-1">Nome Completo</label>
-                        <input type="text" id="nome" name="nome" class="w-full px-4 py-2 border rounded-md focus:outline-none" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="nacionalidade" class="block text-sm font-medium mb-1">Nacionalidade</label>
-                        <input type="text" id="nacionalidade" name="nacionalidade" class="w-full px-4 py-2 border rounded-md focus:outline-none" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="naturalidade" class="block text-sm font-medium mb-1">Naturalidade</label>
-                        <input type="text" id="naturalidade" name="naturalidade" class="w-full px-4 py-2 border rounded-md focus:outline-none" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="localNascimento" class="block text-sm font-medium mb-1">Local de Nascimento</label>
-                        <input type="text" id="localNascimento" name="localNascimento" class="w-full px-4 py-2 border rounded-md focus:outline-none" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="ufNascimento" class="block text-sm font-medium mb-1">UF</label>
-                        <input type="text" id="ufNascimento" name="ufNascimento" class="w-full px-4 py-2 border rounded-md focus:outline-none" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="dataNascimento" class="block text-sm font-medium mb-1">Data de Nascimento</label>
-                        <input type="date" id="dataNascimento" name="dataNascimento" class="w-full px-4 py-2 border rounded-md focus:outline-none" required>
-                    </div>
-                    <div class="form-group md:col-span-2">
-                        <label for="endereco" class="block text-sm font-medium mb-1">Endereço</label>
-                        <input type="text" id="endereco" name="endereco" class="w-full px-4 py-2 border rounded-md focus:outline-none" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="cidade" class="block text-sm font-medium mb-1">Cidade</label>
-                        <input type="text" id="cidade" name="cidade" class="w-full px-4 py-2 border rounded-md focus:outline-none" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="cep" class="block text-sm font-medium mb-1">CEP</label>
-                        <input type="text" id="cep" name="cep" class="w-full px-4 py-2 border rounded-md focus:outline-none" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="tel" class="block text-sm font-medium mb-1">Telefone</label>
-                        <input type="tel" id="tel" name="tel" class="w-full px-4 py-2 border rounded-md focus:outline-none" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email" class="block text-sm font-medium mb-1">E-mail</label>
-                        <input type="email" id="email" name="email" class="w-full px-4 py-2 border rounded-md focus:outline-none" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="rg" class="block text-sm font-medium mb-1">RG</label>
-                        <input type="text" id="rg" name="rg" class="w-full px-4 py-2 border rounded-md focus:outline-none" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="dataEmissaoRg" class="block text-sm font-medium mb-1">Data de Emissão</label>
-                        <input type="date" id="dataEmissaoRg" name="dataEmissaoRg" class="w-full px-4 py-2 border rounded-md focus:outline-none" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="orgaoEmissorRg" class="block text-sm font-medium mb-1">Órgão Emissor</label>
-                        <input type="text" id="orgaoEmissorRg" name="orgaoEmissorRg" class="w-full px-4 py-2 border rounded-md focus:outline-none" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="ufRg" class="block text-sm font-medium mb-1">UF</label>
-                        <input type="text" id="ufRg" name="ufRg" class="w-full px-4 py-2 border rounded-md focus:outline-none" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="cpf" class="block text-sm font-medium mb-1">CPF</label>
-                        <input type="text" id="cpf" name="cpf" class="w-full px-4 py-2 border rounded-md focus:outline-none" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="cnh" class="block text-sm font-medium mb-1">CNH</label>
-                        <input type="text" id="cnh" name="cnh" class="w-full px-4 py-2 border rounded-md focus:outline-none">
-                    </div>
-                    <div class="form-group">
-                        <label for="cnhCategoria" class="block text-sm font-medium mb-1">Categoria</label>
-                        <input type="text" id="cnhCategoria" name="cnhCategoria" class="w-full px-4 py-2 border rounded-md focus:outline-none">
-                    </div>
-                    <div class="form-group">
-                        <label for="dataEmissaoCnh" class="block text-sm font-medium mb-1">Data de Emissão</label>
-                        <input type="date" id="dataEmissaoCnh" name="dataEmissaoCnh" class="w-full px-4 py-2 border rounded-md focus:outline-none">
-                    </div>
-                    <div class="form-group">
-                        <label for="dataValidadeCnh" class="block text-sm font-medium mb-1">Data de Validade</label>
-                        <input type="date" id="dataValidadeCnh" name="dataValidadeCnh" class="w-full px-4 py-2 border rounded-md focus:outline-none">
-                    </div>
-                    <div class="form-group">
-                        <label for="tituloEleitor" class="block text-sm font-medium mb-1">Título de Eleitor</label>
-                        <input type="text" id="tituloEleitor" name="tituloEleitor" class="w-full px-4 py-2 border rounded-md focus:outline-none" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="zonaEleitor" class="block text-sm font-medium mb-1">Zona</label>
-                        <input type="text" id="zonaEleitor" name="zonaEleitor" class="w-full px-4 py-2 border rounded-md focus:outline-none" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="secaoEleitor" class="block text-sm font-medium mb-1">Seção</label>
-                        <input type="text" id="secaoEleitor" name="secaoEleitor" class="w-full px-4 py-2 border rounded-md focus:outline-none" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="reservista" class="block text-sm font-medium mb-1">Certificado de Reservista</label>
-                        <input type="text" id="reservista" name="reservista" class="w-full px-4 py-2 border rounded-md focus:outline-none">
-                    </div>
-                    <div class="form-group">
-                        <label for="reservistaCategoria" class="block text-sm font-medium mb-1">Categoria</label>
-                        <input type="text" id="reservistaCategoria" name="reservistaCategoria" class="w-full px-4 py-2 border rounded-md focus:outline-none">
-                    </div>
-                    <div class="form-group">
-                        <label for="ctps" class="block text-sm font-medium mb-1">CTPS</label>
-                        <input type="text" id="ctps" name="ctps" class="w-full px-4 py-2 border rounded-md focus:outline-none" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="ctpsSerie" class="block text-sm font-medium mb-1">Série</label>
-                        <input type="text" id="ctpsSerie" name="ctpsSerie" class="w-full px-4 py-2 border rounded-md focus:outline-none" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="ctpsUf" class="block text-sm font-medium mb-1">UF</label>
-                        <input type="text" id="ctpsUf" name="ctpsUf" class="w-full px-4 py-2 border rounded-md focus:outline-none" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="dataEmissaoCtps" class="block text-sm font-medium mb-1">Data de Emissão</label>
-                        <input type="date" id="dataEmissaoCtps" name="dataEmissaoCtps" class="w-full px-4 py-2 border rounded-md focus:outline-none" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="ctpsDigital" class="block text-sm font-medium mb-1">Carteira de Trabalho Digital</label>
-                        <input type="text" id="ctpsDigital" name="ctpsDigital" class="w-full px-4 py-2 border rounded-md focus:outline-none">
-                    </div>
-                    <div class="form-group">
-                        <label for="pisPasep" class="block text-sm font-medium mb-1">PIS/PASEP</label>
-                        <input type="text" id="pisPasep" name="pisPasep" class="w-full px-4 py-2 border rounded-md focus:outline-none" required>
-                    </div>
-                    <div class="form-group md:col-span-2">
-                        <label for="filiacaoPai" class="block text-sm font-medium mb-1">Filiação - Pai</label>
-                        <input type="text" id="filiacaoPai" name="filiacaoPai" class="w-full px-4 py-2 border rounded-md focus:outline-none" required>
-                    </div>
-                    <div class="form-group md:col-span-2">
-                        <label for="filiacaoMae" class="block text-sm font-medium mb-1">Filiação - Mãe</label>
-                        <input type="text" id="filiacaoMae" name="filiacaoMae" class="w-full px-4 py-2 border rounded-md focus:outline-none" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="estadoCivil" class="block text-sm font-medium mb-1">Estado Civil</label>
-                        <input type="text" id="estadoCivil" name="estadoCivil" class="w-full px-4 py-2 border rounded-md focus:outline-none" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="conjuge" class="block text-sm font-medium mb-1">Cônjuge/Companheiro</label>
-                        <input type="text" id="conjuge" name="conjuge" class="w-full px-4 py-2 border rounded-md focus:outline-none">
-                    </div>
-                    <div class="form-group flex items-center mt-2">
-                        <label class="block text-sm font-medium mr-4">Tem filhos?</label>
-                        <div class="flex items-center">
-                            <input type="radio" id="temFilhosSim" name="temFilhos" value="Sim" class="mr-2">
-                            <label for="temFilhosSim" class="text-sm font-medium">Sim</label>
-                        </div>
-                        <div class="flex items-center ml-4">
-                            <input type="radio" id="temFilhosNao" name="temFilhos" value="Não" class="mr-2">
-                            <label for="temFilhosNao" class="text-sm font-medium">Não</label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="numeroFilhos" class="block text-sm font-medium mb-1">Número de Filhos</label>
-                        <input type="number" id="numeroFilhos" name="numeroFilhos" class="w-full px-4 py-2 border rounded-md focus:outline-none" min="0">
-                    </div>
-                    <div class="form-group md:col-span-2">
-                        <label for="grauInstrucao" class="block text-sm font-medium mb-1">Grau de Instrução</label>
-                        <input type="text" id="grauInstrucao" name="grauInstrucao" class="w-full px-4 py-2 border rounded-md focus:outline-none" required>
-                        <div class="flex items-center mt-2">
-                            <input type="checkbox" id="grauCompleto" name="grauStatus" value="Completo" class="mr-2">
-                            <label for="grauCompleto" class="text-sm font-medium">Completo</label>
-                            <input type="checkbox" id="grauIncompleto" name="grauStatus" value="Incompleto/Cursando" class="ml-4 mr-2">
-                            <label for="grauIncompleto" class="text-sm font-medium">Incompleto/Cursando</label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="banco" class="block text-sm font-medium mb-1">Banco</label>
-                        <input type="text" id="banco" name="banco" class="w-full px-4 py-2 border rounded-md focus:outline-none" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="agencia" class="block text-sm font-medium mb-1">Agência</label>
-                        <input type="text" id="agencia" name="agencia" class="w-full px-4 py-2 border rounded-md focus:outline-none" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="contaDeposito" class="block text-sm font-medium mb-1">Conta para Depósito</label>
-                        <input type="text" id="contaDeposito" name="contaDeposito" class="w-full px-4 py-2 border rounded-md focus:outline-none" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="chavePix" class="block text-sm font-medium mb-1">Chave PIX</label>
-                        <input type="text" id="chavePix" name="chavePix" class="w-full px-4 py-2 border rounded-md focus:outline-none">
-                    </div>
-                </div>
-            </fieldset>
-
-            <fieldset class="border-t border-gray-300 pt-6">
-                <legend class="text-xl font-semibold mb-2 text-gray-800">2. INFORMAÇÕES DO EMPREGADOR PARA A ADMISSÃO</legend>
-                <p class="mb-4 text-sm font-medium text-gray-600 italic">
-                    **Observação:** Preenchimento pela empresa contratante
-                </p>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="form-group flex items-center">
-                        <label class="block text-sm font-medium mr-4">1º Emprego?</label>
-                        <div class="flex items-center">
-                            <input type="radio" id="primeiroEmpregoSim" name="primeiroEmprego" value="Sim" class="mr-2">
-                            <label for="primeiroEmpregoSim" class="text-sm font-medium">Sim</label>
-                        </div>
-                        <div class="flex items-center ml-4">
-                            <input type="radio" id="primeiroEmpregoNao" name="primeiroEmprego" value="Não" class="mr-2">
-                            <label for="primeiroEmpregoNao" class="text-sm font-medium">Não</label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="dataAdmissao" class="block text-sm font-medium mb-1">Data de Admissão</label>
-                        <input type="date" id="dataAdmissao" name="dataAdmissao" class="w-full px-4 py-2 border rounded-md focus:outline-none" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="salario" class="block text-sm font-medium mb-1">Salário</label>
-                        <input type="text" id="salario" name="salario" class="w-full px-4 py-2 border rounded-md focus:outline-none" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="funcao" class="block text-sm font-medium mb-1">Função</label>
-                        <input type="text" id="funcao" name="funcao" class="w-full px-4 py-2 border rounded-md focus:outline-none" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="cargaHorariaMensal" class="block text-sm font-medium mb-1">Carga Horária Mensal</label>
-                        <input type="text" id="cargaHorariaMensal" name="cargaHorariaMensal" class="w-full px-4 py-2 border rounded-md focus:outline-none" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="cargaHorariaSemanal" class="block text-sm font-medium mb-1">Carga Horária Semanal</label>
-                        <input type="text" id="cargaHorariaSemanal" name="cargaHorariaSemanal" class="w-full px-4 py-2 border rounded-md focus:outline-none" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="diaFolga" class="block text-sm font-medium mb-1">Dia de Folga</label>
-                        <input type="text" id="diaFolga" name="diaFolga" class="w-full px-4 py-2 border rounded-md focus:outline-none" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="diasContrato" class="block text-sm font-medium mb-1">Contrato de Experiência (dias)</label>
-                        <input type="number" id="diasContrato" name="diasContrato" class="w-full px-4 py-2 border rounded-md focus:outline-none" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="diasProrrogacao" class="block text-sm font-medium mb-1">Prorrogado por mais (dias)</label>
-                        <input type="number" id="diasProrrogacao" name="diasProrrogacao" class="w-full px-4 py-2 border rounded-md focus:outline-none" required>
-                    </div>
-                    <div class="form-group flex items-center">
-                        <label class="block text-sm font-medium mr-4">Desconto de Vale Transporte?</label>
-                        <div class="flex items-center">
-                            <input type="radio" id="valeTransporteSim" name="valeTransporte" value="Sim" class="mr-2">
-                            <label for="valeTransporteSim" class="text-sm font-medium">Sim</label>
-                        </div>
-                        <div class="flex items-center ml-4">
-                            <input type="radio" id="valeTransporteNao" name="valeTransporte" value="Não" class="mr-2">
-                            <label for="valeTransporteNao" class="text-sm font-medium">Não</label>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="mt-6">
-                    <label class="block text-sm font-medium mb-2">Horário de Trabalho:</label>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="form-group">
-                            <label for="horarioSegSex" class="block text-sm font-medium mb-1">Segunda a Sexta</label>
-                            <input type="text" id="horarioSegSex" name="horarioSegSex" placeholder="Ex: 08:00 às 12:00 e das 14:00 às 18:00" class="w-full px-4 py-2 border rounded-md focus:outline-none" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="horarioSabado" class="block text-sm font-medium mb-1">Sábado</label>
-                            <input type="text" id="horarioSabado" name="horarioSabado" placeholder="Ex: 08:00 às 12:00 e das 14:00 às 18:00" class="w-full px-4 py-2 border rounded-md focus:outline-none">
-                        </div>
-                    </div>
-                </div>
-            </fieldset>
-
-            <div class="form-group pt-6 border-t border-gray-300">
-                <label for="dataPreenchimento" class="block text-sm font-medium mb-1">Data de Preenchimento</label>
-                <input type="date" id="dataPreenchimento" name="dataPreenchimento" class="w-full px-4 py-2 border rounded-md focus:outline-none" required>
+            <div>
+                <label class="block text-xs font-bold text-gray-700 uppercase mb-1">WhatsApp</label>
+                <input type="tel" placeholder="(00) 00000-0000" class="input-field">
+            </div>
+            <div>
+                <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Qual o seu objetivo?</label>
+                <select class="input-field">
+                    <option>Abrir um novo MEI</option>
+                    <option>Regularizar MEI Inativo</option>
+                    <option>Contratar um Funcionário</option>
+                    <option>Mentoria Individual</option>
+                </select>
             </div>
 
-            <div class="flex flex-col items-center mt-8 space-y-4 md:flex-row md:justify-center md:space-x-4 md:space-y-0">
-                <span class="text-lg font-bold text-gray-800">Enviar Ficha para:</span>
-                <a id="whatsappEmpresaButton" href="#" target="_blank" class="bg-[#25D366] text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-[#128C7E] transition duration-300">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Icon" class="w-6 h-6 inline-block mr-2">
-                    EMPRESA CONTRATANTE
-                </a>
-                
-                <a id="whatsappPercyButton" href="#" target="_blank" class="bg-[#1C5F94] text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-[#124269] transition duration-300">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Icon" class="w-6 h-6 inline-block mr-2">
-                    Percy Contabilidade
-                </a>
-            </div>
-            </form>
+            <button type="button" class="btn-send w-full py-4 rounded-xl font-bold shadow-lg mt-4">
+                ENVIAR DADOS PARA O PERCY
+            </button>
+        </form>
 
-        <div id="statusMessage" class="mt-6 text-center text-sm font-semibold hidden"></div>
+        <div class="relative my-10">
+            <div class="absolute inset-0 flex items-center"><span class="w-full border-t border-gray-200"></span></div>
+            <div class="relative flex justify-center text-xs uppercase"><span class="bg-white px-2 text-gray-400">Segurança Garantida</span></div>
+        </div>
 
+        <button onclick="retornoPercyComSom()" class="btn-return w-full py-3 rounded-xl font-semibold flex items-center justify-center gap-2">
+            <span>⬅️</span> Voltar ao Menu Principal
+        </button>
     </div>
 
+    <audio id="audioAlerta" src="https://percycontabilidade.github.io/guia-mei-percy/marca-percy.mp3"></audio>
+
     <script>
-        document.addEventListener('DOMContentLoaded', (event) => {
-            const today = new Date().toISOString().slice(0, 10);
-            document.getElementById('dataPreenchimento').value = today;
-            updateAllLinks();
-        });
-
-        document.getElementById('employeeForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-        });
-
-        document.getElementById('employeeForm').addEventListener('input', updateAllLinks);
-
-        function generateFullMessage(data) {
-            const message = `
-*--- FICHA DE REGISTRO DE FUNCIONÁRIOS ---*
-*Empresa Contratante:* ${data.empresa || 'Não informado'}
-*WhatsApp Empresa:* ${data.whatsappEmpresa || 'Não informado'}
-
-*--- DADOS CADASTRAIS ---*
-*Nome Completo:* ${data.nome || 'Não informado'}
-*Nacionalidade:* ${data.nacionalidade || 'Não informado'}
-*Naturalidade:* ${data.naturalidade || 'Não informado'}
-*Local de Nascimento:* ${data.localNascimento || 'Não informado'}
-*UF de Nascimento:* ${data.ufNascimento || 'Não informado'}
-*Data de Nascimento:* ${data.dataNascimento || 'Não informado'}
-*Endereço:* ${data.endereco || 'Não informado'}
-*Cidade:* ${data.cidade || 'Não informado'}
-*CEP:* ${data.cep || 'Não informado'}
-*Telefone:* ${data.tel || 'Não informado'}
-*E-mail:* ${data.email || 'Não informado'}
-*RG:* ${data.rg || 'Não informado'}
-*Data de Emissão RG:* ${data.dataEmissaoRg || 'Não informado'}
-*Órgão Emissor RG:* ${data.orgaoEmissorRg || 'Não informado'}
-*UF RG:* ${data.ufRg || 'Não informado'}
-*CPF:* ${data.cpf || 'Não informado'}
-*CNH:* ${data.cnh || 'Não possui'}
-*Categoria CNH:* ${data.cnhCategoria || 'Não se aplica'}
-*Data de Emissão CNH:* ${data.dataEmissaoCnh || 'Não se aplica'}
-*Data de Validade CNH:* ${data.dataValidadeCnh || 'Não se aplica'}
-*Título de Eleitor:* ${data.tituloEleitor || 'Não informado'}
-*Zona Eleitor:* ${data.zonaEleitor || 'Não informado'}
-*Seção Eleitor:* ${data.secaoEleitor || 'Não informado'}
-*Certificado de Reservista:* ${data.reservista || 'Não possui'}
-*Categoria Reservista:* ${data.reservistaCategoria || 'Não se aplica'}
-*CTPS:* ${data.ctps || 'Não informado'}
-*Série CTPS:* ${data.ctpsSerie || 'Não informado'}
-*UF CTPS:* ${data.ctpsUf || 'Não informado'}
-*Data de Emissão CTPS:* ${data.dataEmissaoCtps || 'Não informado'}
-*Carteira Digital:* ${data.ctpsDigital || 'Não possui'}
-*PIS/PASEP:* ${data.pisPasep || 'Não informado'}
-*Filiação Pai:* ${data.filiacaoPai || 'Não informado'}
-*Filiação Mãe:* ${data.filiacaoMae || 'Não informado'}
-*Estado Civil:* ${data.estadoCivil || 'Não informado'}
-*Cônjuge/Companheiro:* ${data.conjuge || 'Não se aplica'}
-*Tem filhos?:* ${data.temFilhos || 'Não informado'}
-*Número de Filhos:* ${data.numeroFilhos || 'Não se aplica'}
-*Grau de Instrução:* ${data.grauInstrucao || 'Não informado'} - ${data.grauStatus || 'Não informado'}
-*Banco:* ${data.banco || 'Não informado'}
-*Agência:* ${data.agencia || 'Não informado'}
-*Conta para Depósito:* ${data.contaDeposito || 'Não informado'}
-*Chave PIX:* ${data.chavePix || 'Não informada'}
-
-*--- INFORMAÇÕES DO EMPREGADOR ---*
-*Primeiro Emprego?:* ${data.primeiroEmprego || 'Não informado'}
-*Data de Admissão:* ${data.dataAdmissao || 'Não informado'}
-*Salário:* ${data.salario || 'Não informado'}
-*Função:* ${data.funcao || 'Não informado'}
-*Carga Horária Mensal:* ${data.cargaHorariaMensal || 'Não informado'}
-*Carga Horária Semanal:* ${data.cargaHorariaSemanal || 'Não informado'}
-*Dia de Folga:* ${data.diaFolga || 'Não informado'}
-*Contrato de Experiência:* ${data.diasContrato || 'Não informado'} dias
-*Prorrogado por mais:* ${data.diasProrrogacao || 'Não informado'} dias
-*Desconto Vale Transporte?:* ${data.valeTransporte || 'Não informado'}
-*Horário Seg a Sex:* ${data.horarioSegSex || 'Não informado'}
-*Horário Sábado:* ${data.horarioSabado || 'Não se aplica'}
-            `;
-            return message;
-        }
-
-        function updateAllLinks() {
-            const formData = new FormData(document.getElementById('employeeForm'));
-            const data = Object.fromEntries(formData.entries());
-
-            const fullMessage = generateFullMessage(data);
-
-            const whatsappInputEmpresa = document.getElementById('whatsappEmpresa');
-            const whatsappButtonEmpresa = document.getElementById('whatsappEmpresaButton');
-            const numeroEmpresa = whatsappInputEmpresa.value.replace(/\D/g, ''); 
-            
-            if (numeroEmpresa.length >= 10) {
-                const whatsappLinkEmpresa = `https://wa.me/${numeroEmpresa}?text=${encodeURIComponent(fullMessage)}`;
-                whatsappButtonEmpresa.href = whatsappLinkEmpresa;
-            } else {
-                whatsappButtonEmpresa.href = '#';
-            }
-
-            const percyNumber = "5521985518475";
-            const whatsappButtonPercy = document.getElementById('whatsappPercyButton');
-            const whatsappLinkPercy = `https://wa.me/${percyNumber}?text=${encodeURIComponent(fullMessage)}`;
-            whatsappButtonPercy.href = whatsappLinkPercy;
-
-            const statusMessage = document.getElementById('statusMessage');
-            if (numeroEmpresa.length < 10) {
-                statusMessage.textContent = 'Por favor, insira um número de WhatsApp válido para a empresa contratante.';
-                statusMessage.style.color = '#dc2626';
-                statusMessage.classList.remove('hidden');
-            } else {
-                statusMessage.textContent = 'Ficha preenchida! Clique em um dos botões acima para enviar.';
-                statusMessage.style.color = '#334155';
-                statusMessage.classList.remove('hidden');
-            }
+        function retornoPercyComSom() {
+            const player = document.getElementById('audioAlerta');
+            player.play();
+            setTimeout(function() {
+                window.location.href = "https://percycontabilidade.github.io/consultoria/";
+            }, 1200);
         }
     </script>
 </body>
