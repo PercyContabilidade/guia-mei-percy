@@ -1,227 +1,100 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz MEI - Percy Contabilidade</title>
+    <title>Quiz Diagnóstico MEI - Percy Contabilidade</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f3f4f6;
+        :root { --primary: #1a1a1a; --accent: #d4af37; }
+        body { font-family: 'Inter', sans-serif; background-color: #f9fafb; color: #1a1a1a; }
+        .quiz-card { background: white; border-radius: 2rem; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+        .option-btn { 
+            border: 2px solid #e5e7eb; border-radius: 1rem; padding: 1rem; width: 100%; 
+            text-align: left; transition: 0.3s; margin-bottom: 1rem; font-weight: 500;
         }
-
-        .container-quiz {
-            background-color: #fff;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border-radius: 1.5rem;
-            padding: 2.5rem;
-            max-width: 32rem;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .btn-option {
-            background-color: #d4ac5e;
-            color: #fff;
-            border-radius: 9999px;
-            padding: 0.75rem 1.5rem;
-            font-weight: 600;
-            transition-property: background-color, transform;
-            transition-duration: 300ms;
-            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-            width: 100%;
-            margin-bottom: 10px;
-        }
-
-        .btn-option:hover {
-            background-color: #b79148;
-            transform: translateY(-2px);
-        }
-
-        .btn-return {
-            background-color: #1a1a1a;
-            color: #d4af37;
-            border: 2px solid #d4af37;
-            border-radius: 9999px;
-            padding: 0.75rem 1.5rem;
-            font-weight: 600;
-            margin-top: 20px;
-            transition: 0.3s;
-            width: 100%;
-        }
-
-        .btn-return:hover {
-            background-color: #d4af37;
-            color: #1a1a1a;
-        }
-
-        .progress-bar {
-            background-color: #e5e7eb;
-            height: 0.5rem;
-            border-radius: 9999px;
-            overflow: hidden;
-        }
-
-        .progress-bar-fill {
-            background-color: #5c1f20;
-            height: 100%;
-            transition: width 0.5s ease-in-out;
-        }
+        .option-btn:hover { border-color: var(--accent); background-color: #fffdf5; }
+        .btn-vip { background-color: var(--primary); color: var(--accent); font-weight: bold; }
+        .btn-return { border: 2px solid var(--accent); color: var(--accent); font-weight: bold; }
     </style>
 </head>
+<body class="py-10 px-4 min-h-screen flex items-center justify-center">
 
-<body>
-    <main class="py-12 px-4 sm:px-6 lg:px-8 flex items-center justify-center min-h-screen">
-        <div class="container-quiz w-full">
-            <img src="logopercyatual.jpeg" alt="Logo Percy Contabilidade" class="mx-auto mb-8 w-48 rounded-full">
+    <div class="quiz-card w-full max-w-xl p-8 md:p-12">
+        <div class="text-center mb-10">
+            <img src="logopercyatual.jpeg" alt="Percy Logo" class="mx-auto w-24 rounded-full mb-4 border-2 border-[#d4af37]">
+            <h1 class="text-2xl font-bold">Diagnóstico MEI</h1>
+            <p class="text-gray-500">Descubra o melhor caminho para o seu negócio</p>
+        </div>
 
-            <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">Quiz para MEI</h1>
-            <p id="progress-text" class="text-sm text-center text-gray-500 mb-4">Pergunta 1 de 6</p>
-            <div class="progress-bar mb-8">
-                <div id="progress-fill" class="progress-bar-fill" style="width: 0%;"></div>
-            </div>
+        <div id="quiz-content">
+            <h2 class="text-lg font-bold mb-6 text-center">Qual o momento atual da sua empresa?</h2>
+            
+            <button onclick="mostrarResultado('formalizado')" class="option-btn">
+                🚀 Já sou MEI e quero crescer com segurança.
+            </button>
+            
+            <button onclick="mostrarResultado('informal')" class="option-btn">
+                💡 Trabalho por conta própria e quero me formalizar.
+            </button>
+            
+            <button onclick="mostrarResultado('irregular')" class="option-btn">
+                ⚠️ Tenho um MEI, mas está parado ou com dívidas.
+            </button>
+        </div>
 
-            <div id="quiz-container" class="text-center">
-                <div id="question-card" class="bg-gray-50 p-6 rounded-2xl shadow-inner transition-opacity duration-300">
-                    <p id="question-text" class="text-xl font-semibold text-gray-700 mb-6">Carregando...</p>
-                    <div id="options-container" class="flex flex-col space-y-4">
-                        </div>
+        <div id="resultado" class="hidden text-center">
+            <div id="res-msg" class="bg-yellow-50 p-6 rounded-2xl border-l-4 border-[#d4af37] mb-8 text-left">
                 </div>
+            
+            <a id="res-link" href="#" target="_blank" class="btn-vip block w-full py-4 rounded-xl shadow-lg mb-6 uppercase tracking-wider">
+                Falar com Dr. Percy
+            </a>
 
-                <div id="results-area" class="hidden">
-                    
-                    <div id="thank-you" class="hidden">
-                        <h2 class="text-2xl font-bold text-gray-800 mb-4">Obrigado por sua participação!</h2>
-                        <p class="text-gray-600 mb-6">Seus dados são valiosos para melhorarmos nossos serviços.</p>
-                        <a href="https://wa.me/5521985518475" target="_blank" class="btn-option inline-block">Fale com um Especialista</a>
-                    </div>
-
-                    <div id="cta-urgente" class="hidden">
-                        <h2 class="text-2xl font-bold text-gray-800 mb-4">Temos a solução para você!</h2>
-                        <p class="text-gray-600 mb-6">A Percy Contabilidade resolve inaptidões e dívidas de forma rápida. Recupere sua prosperidade.</p>
-                        <a href="https://wa.me/5521985518475" target="_blank" class="btn-option inline-block">Fale com um Especialista</a>
-                    </div>
-
-                    <div id="cta-custo" class="hidden">
-                        <h2 class="text-2xl font-bold text-gray-800 mb-4">Solução sob medida!</h2>
-                        <p class="text-gray-600 mb-6">Planos acessíveis com o melhor custo-benefício para o seu MEI.</p>
-                        <a href="https://wa.me/5521985518475" target="_blank" class="btn-option inline-block">Fale com um Especialista</a>
-                    </div>
-
-                    <div id="cta-confianca" class="hidden">
-                        <h2 class="text-2xl font-bold text-gray-800 mb-4">Credibilidade em primeiro lugar.</h2>
-                        <p class="text-gray-600 mb-6">Garantimos que seu MEI estará sempre regularizado e seguro.</p>
-                        <a href="https://wa.me/5521985518475" target="_blank" class="btn-option inline-block">Fale com um Especialista</a>
-                    </div>
-
-                    <div id="cta-praticidade" class="hidden">
-                        <h2 class="text-2xl font-bold text-gray-800 mb-4">Menos burocracia, mais agilidade.</h2>
-                        <p class="text-gray-600 mb-6">Cuidamos de tudo para você focar apenas no seu crescimento.</p>
-                        <a href="https://wa.me/5521985518475" target="_blank" class="btn-option inline-block">Fale com um Especialista</a>
-                    </div>
-
-                    <div id="cta-suporte" class="hidden">
-                        <h2 class="text-2xl font-bold text-gray-800 mb-4">Suporte humanizado ao seu lado.</h2>
-                        <p class="text-gray-600 mb-6">Um time de especialistas pronto para tirar todas as suas dúvidas.</p>
-                        <a href="https://wa.me/5521985518475" target="_blank" class="btn-option inline-block">Fale com um Especialista</a>
-                    </div>
-
-                    <button onclick="retornarAoMenu()" class="btn-return">
-                        ⬅️ Voltar ao Menu Principal
-                    </button>
-                </div>
+            <div class="pt-6 border-t border-gray-100">
+                <button onclick="percyRetornoVip('https://percycontabilidade.github.io/consultoria/')" class="btn-return w-full py-3 rounded-xl flex items-center justify-center gap-2 hover:bg-[#d4af37] hover:text-black transition">
+                    ⬅️ Voltar ao Hub Principal
+                </button>
             </div>
         </div>
-    </main>
+    </div>
 
-    <audio id="percySound" src="https://percycontabilidade.github.io/guia-mei-percy/marca-percy.mp3"></audio>
+    <audio id="audioVip" src="https://assets.mixkit.co/active_storage/sfx/2358/2358-preview.mp3"></audio>
 
     <script>
-        function retornarAoMenu() {
-            const sound = document.getElementById('percySound');
-            sound.play();
-            setTimeout(() => {
-                window.location.href = "https://percycontabilidade.github.io/consultoria/";
-            }, 1300);
+        function mostrarResultado(perfil) {
+            const quiz = document.getElementById('quiz-content');
+            const res = document.getElementById('resultado');
+            const msg = document.getElementById('res-msg');
+            const link = document.getElementById('res-link');
+            const som = document.getElementById('audioVip');
+
+            // Toca o som no clique da opção
+            som.play();
+
+            quiz.classList.add('hidden');
+            res.classList.remove('hidden');
+
+            if(perfil === 'formalizado') {
+                msg.innerHTML = "<strong>Perfil Crescimento:</strong> Você precisa de gestão inteligente para não ultrapassar o limite e evitar multas. Vamos planejar seu próximo nível!";
+                link.href = "https://wa.me/5521985518475?text=Olá+Percy,+já+sou+MEI+e+quero+crescer.";
+            } else if(perfil === 'informal') {
+                msg.innerHTML = "<strong>Perfil Formalização:</strong> Chegou a hora de ter seu CNPJ, emitir notas e garantir sua aposentadoria. O projeto 'Cheguei, Sou MEI' é para você!";
+                link.href = "https://wa.me/5521985518475?text=Olá+Percy,+quero+me+formalizar.";
+            } else {
+                msg.innerHTML = "<strong>Perfil Regularização:</strong> Não deixe as dívidas acumularem no seu CPF. Vamos parcelar seus débitos e ativar seu CNPJ hoje.";
+                link.href = "https://percycontabilidade.github.io/guia-mei-percy/mei_inativo.html";
+                link.innerText = "Regularizar Meu MEI Agora";
+            }
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const questionCard = document.getElementById('question-card');
-            const questionText = document.getElementById('question-text');
-            const optionsContainer = document.getElementById('options-container');
-            const resultsArea = document.getElementById('results-area');
-            
-            const progressFill = document.getElementById('progress-fill');
-            const progressText = document.getElementById('progress-text');
-
-            const questions = [
-                { question: "Qual a principal área de atuação do seu MEI?", options: ["Serviços de beleza e estética", "Comércio varejista", "Serviços de alimentação", "Reparação e manutenção", "Transporte de passageiros"] },
-                { question: "Você já teve ou tem problemas com a inaptidão do seu CNPJ?", options: ["Sim, já tive ou estou com esse problema.", "Não, meu CNPJ está regular.", "Não sei, preciso verificar."] },
-                { question: "Qual desafio você considera mais difícil sozinho?", options: ["Regularizar pendências e dívidas", "Fazer a Declaração Anual", "Entender benefícios INSS", "Evitar multas e juros"] },
-                { question: "O que mais te preocupa no seu MEI hoje?", options: ["Dívidas acumuladas", "Perder benefícios do INSS", "O risco de ter o nome sujo", "Ter que fechar o CNPJ"] },
-                { question: "Qual tipo de conteúdo sobre MEI você consome?", options: ["Vídeos curtos", "Textos informativos", "Lives e webinars", "Áudios ou podcasts"] },
-                { question: "O que te motivaria a contratar contabilidade?", options: ["Custo-benefício e preço acessível", "Confiança e credibilidade", "Facilidade e praticidade", "Suporte humanizado e personalizado"] }
-            ];
-
-            let currentQuestionIndex = 0;
-
-            function displayQuestion() {
-                if (currentQuestionIndex < questions.length) {
-                    const currentQuestion = questions[currentQuestionIndex];
-                    questionText.textContent = currentQuestion.question;
-                    optionsContainer.innerHTML = '';
-                    currentQuestion.options.forEach(option => {
-                        const button = document.createElement('button');
-                        button.textContent = option;
-                        button.className = 'btn-option';
-                        button.onclick = () => handleAnswer(option);
-                        optionsContainer.appendChild(button);
-                    });
-                    progressFill.style.width = `${(currentQuestionIndex / questions.length) * 100}%`;
-                    progressText.textContent = `Pergunta ${currentQuestionIndex + 1} de ${questions.length}`;
-                }
-            }
-
-            function handleAnswer(answer) {
-                // Lógica de desvio para CTAs urgentes
-                if ((currentQuestionIndex === 1 && answer.includes("Sim")) || 
-                    (currentQuestionIndex === 2 && (answer.includes("Regularizar") || answer.includes("Evitar multas"))) ||
-                    (currentQuestionIndex === 3 && (answer.includes("Dívidas") || answer.includes("fechar")))) {
-                    showFinalCTA('cta-urgente');
-                    return;
-                }
-
-                if (currentQuestionIndex === 5) {
-                    const mapping = {
-                        "Custo-benefício": "cta-custo",
-                        "Confiança": "cta-confianca",
-                        "Facilidade": "cta-praticidade",
-                        "Suporte": "cta-suporte"
-                    };
-                    const key = Object.keys(mapping).find(k => answer.includes(k)) || "thank-you";
-                    showFinalCTA(mapping[key] || "thank-you");
-                    return;
-                }
-
-                currentQuestionIndex++;
-                displayQuestion();
-            }
-
-            function showFinalCTA(id) {
-                questionCard.classList.add('hidden');
-                progressFill.style.width = '100%';
-                progressText.textContent = '';
-                resultsArea.classList.remove('hidden');
-                document.getElementById(id).classList.remove('hidden');
-            }
-
-            displayQuestion();
-        });
+        function percyRetornoVip(url) {
+            const som = document.getElementById('audioVip');
+            som.play();
+            setTimeout(() => {
+                window.location.href = url;
+            }, 600);
+        }
     </script>
 </body>
 </html>
