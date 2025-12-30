@@ -5,9 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz MEI - Percy Contabilidade</title>
-    <!-- Incluindo Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Configuração de fonte -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
@@ -36,11 +34,30 @@
             transition-property: background-color, transform;
             transition-duration: 300ms;
             transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            width: 100%;
+            margin-bottom: 10px;
         }
 
         .btn-option:hover {
             background-color: #b79148;
             transform: translateY(-2px);
+        }
+
+        .btn-return {
+            background-color: #1a1a1a;
+            color: #d4af37;
+            border: 2px solid #d4af37;
+            border-radius: 9999px;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: 0.3s;
+            width: 100%;
+        }
+
+        .btn-return:hover {
+            background-color: #d4af37;
+            color: #1a1a1a;
         }
 
         .progress-bar {
@@ -61,7 +78,6 @@
 <body>
     <main class="py-12 px-4 sm:px-6 lg:px-8 flex items-center justify-center min-h-screen">
         <div class="container-quiz w-full">
-            <!-- Adicionando a logomarca da Percy Contabilidade -->
             <img src="logopercyatual.jpeg" alt="Logo Percy Contabilidade" class="mx-auto mb-8 w-48 rounded-full">
 
             <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">Quiz para MEI</h1>
@@ -74,126 +90,85 @@
                 <div id="question-card" class="bg-gray-50 p-6 rounded-2xl shadow-inner transition-opacity duration-300">
                     <p id="question-text" class="text-xl font-semibold text-gray-700 mb-6">Carregando...</p>
                     <div id="options-container" class="flex flex-col space-y-4">
-                        <!-- Opções serão injetadas aqui via JavaScript -->
+                        </div>
+                </div>
+
+                <div id="results-area" class="hidden">
+                    
+                    <div id="thank-you" class="hidden">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-4">Obrigado por sua participação!</h2>
+                        <p class="text-gray-600 mb-6">Seus dados são valiosos para melhorarmos nossos serviços.</p>
+                        <a href="https://wa.me/5521985518475" target="_blank" class="btn-option inline-block">Fale com um Especialista</a>
                     </div>
-                </div>
-                <!-- Mensagem final após a conclusão do quiz -->
-                <div id="thank-you" class="hidden text-center">
-                    <h2 class="text-2xl font-bold text-gray-800 mb-4">Obrigado por sua participação!</h2>
-                    <p class="text-gray-600 mb-6">Seus dados são valiosos para melhorarmos nossos serviços e conteúdos.</p>
-                    <a href="https://wa.me/5521985518475" target="_blank"
-                        class="btn-option inline-block text-white">
-                        Fale com um Especialista
-                    </a>
-                </div>
-                <!-- Mensagem de CTA imediato para leads de alto potencial -->
-                <div id="cta-urgente" class="hidden text-center">
-                    <h2 class="text-2xl font-bold text-gray-800 mb-4">Temos a solução para você!</h2>
-                    <p class="text-gray-600 mb-6">Não se preocupe, a **Percy Contabilidade** pode resolver isso para você de forma rápida e segura. Fale agora mesmo com um especialista e recupere a **prosperidade** do seu MEI.</p>
-                    <a href="https://wa.me/5521985518475" target="_blank"
-                        class="btn-option inline-block text-white">
-                        Fale com um Especialista
-                    </a>
-                </div>
-                <!-- CTAs personalizados para a pergunta 6 -->
-                <div id="cta-custo" class="hidden text-center">
-                    <h2 class="text-2xl font-bold text-gray-800 mb-4">Solução sob medida para o seu bolso!</h2>
-                    <p class="text-gray-600 mb-6">A **Percy Contabilidade** oferece planos acessíveis e transparentes para manter o seu MEI em dia, com o melhor **custo-benefício**. Fale com um especialista para conhecer nossos planos.</p>
-                    <a href="https://wa.me/5521985518475" target="_blank" class="btn-option inline-block text-white">Fale com um Especialista</a>
-                </div>
-                <div id="cta-confianca" class="hidden text-center">
-                    <h2 class="text-2xl font-bold text-gray-800 mb-4">Sua segurança e credibilidade em primeiro lugar.</h2>
-                    <p class="text-gray-600 mb-6">Nosso compromisso é com a **confiança** e a **credibilidade**. A **Percy Contabilidade** garante que seu MEI estará sempre regularizado, com a tranquilidade que você merece. Fale com um especialista para saber mais.</p>
-                    <a href="https://wa.me/5521985518475" target="_blank" class="btn-option inline-block text-white">Fale com um Especialista</a>
-                </div>
-                <div id="cta-praticidade" class="hidden text-center">
-                    <h2 class="text-2xl font-bold text-gray-800 mb-4">Menos burocracia, mais praticidade.</h2>
-                    <p class="text-gray-600 mb-6">Cuidamos de toda a burocracia para você. A **Percy Contabilidade** oferece um serviço ágil e sem complicações, para que você foque no que realmente importa: o seu negócio. Fale com um especialista e comprove a **praticidade**.</p>
-                    <a href="https://wa.me/5521985518475" target="_blank" class="btn-option inline-block text-white">Fale com um Especialista</a>
-                </div>
-                <div id="cta-suporte" class="hidden text-center">
-                    <h2 class="text-2xl font-bold text-gray-800 mb-4">Um time de especialistas ao seu lado.</h2>
-                    <p class="text-gray-600 mb-6">Com a **Percy Contabilidade**, você não está sozinho. Oferecemos um **suporte humanizado e personalizado**, pronto para tirar todas as suas dúvidas. Fale com um especialista e sinta a diferença.</p>
-                    <a href="https://wa.me/5521985518475" target="_blank" class="btn-option inline-block text-white">Fale com um Especialista</a>
+
+                    <div id="cta-urgente" class="hidden">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-4">Temos a solução para você!</h2>
+                        <p class="text-gray-600 mb-6">A Percy Contabilidade resolve inaptidões e dívidas de forma rápida. Recupere sua prosperidade.</p>
+                        <a href="https://wa.me/5521985518475" target="_blank" class="btn-option inline-block">Fale com um Especialista</a>
+                    </div>
+
+                    <div id="cta-custo" class="hidden">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-4">Solução sob medida!</h2>
+                        <p class="text-gray-600 mb-6">Planos acessíveis com o melhor custo-benefício para o seu MEI.</p>
+                        <a href="https://wa.me/5521985518475" target="_blank" class="btn-option inline-block">Fale com um Especialista</a>
+                    </div>
+
+                    <div id="cta-confianca" class="hidden">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-4">Credibilidade em primeiro lugar.</h2>
+                        <p class="text-gray-600 mb-6">Garantimos que seu MEI estará sempre regularizado e seguro.</p>
+                        <a href="https://wa.me/5521985518475" target="_blank" class="btn-option inline-block">Fale com um Especialista</a>
+                    </div>
+
+                    <div id="cta-praticidade" class="hidden">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-4">Menos burocracia, mais agilidade.</h2>
+                        <p class="text-gray-600 mb-6">Cuidamos de tudo para você focar apenas no seu crescimento.</p>
+                        <a href="https://wa.me/5521985518475" target="_blank" class="btn-option inline-block">Fale com um Especialista</a>
+                    </div>
+
+                    <div id="cta-suporte" class="hidden">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-4">Suporte humanizado ao seu lado.</h2>
+                        <p class="text-gray-600 mb-6">Um time de especialistas pronto para tirar todas as suas dúvidas.</p>
+                        <a href="https://wa.me/5521985518475" target="_blank" class="btn-option inline-block">Fale com um Especialista</a>
+                    </div>
+
+                    <button onclick="retornarAoMenu()" class="btn-return">
+                        ⬅️ Voltar ao Menu Principal
+                    </button>
                 </div>
             </div>
         </div>
     </main>
 
+    <audio id="percySound" src="https://percycontabilidade.github.io/guia-mei-percy/marca-percy.mp3"></audio>
+
     <script>
+        function retornarAoMenu() {
+            const sound = document.getElementById('percySound');
+            sound.play();
+            setTimeout(() => {
+                window.location.href = "https://percycontabilidade.github.io/consultoria/";
+            }, 1300);
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
-            const quizContainer = document.getElementById('quiz-container');
             const questionCard = document.getElementById('question-card');
             const questionText = document.getElementById('question-text');
             const optionsContainer = document.getElementById('options-container');
-            const thankYouMessage = document.getElementById('thank-you');
-            const ctaUrgente = document.getElementById('cta-urgente');
-            const ctaCusto = document.getElementById('cta-custo');
-            const ctaConfianca = document.getElementById('cta-confianca');
-            const ctaPraticidade = document.getElementById('cta-praticidade');
-            const ctaSuporte = document.getElementById('cta-suporte');
+            const resultsArea = document.getElementById('results-area');
+            
             const progressFill = document.getElementById('progress-fill');
             const progressText = document.getElementById('progress-text');
 
             const questions = [
-                {
-                    question: "Qual a principal área de atuação do seu MEI?",
-                    options: [
-                        "Serviços de beleza e estética (cabeleireiros, manicures)",
-                        "Comércio varejista (roupas, alimentos, artesanato)",
-                        "Serviços de alimentação (lanchonetes, restaurantes)",
-                        "Atividades de reparação e manutenção",
-                        "Transporte de passageiros"
-                    ]
-                },
-                {
-                    question: "Você já teve ou tem problemas com a inaptidão do seu CNPJ?",
-                    options: [
-                        "Sim, já tive ou estou com esse problema.",
-                        "Não, meu CNPJ está regular.",
-                        "Não sei, preciso verificar."
-                    ]
-                },
-                {
-                    question: "Qual desses desafios você considera o mais difícil de resolver sozinho como MEI?",
-                    options: [
-                        "Regularizar pendências e dívidas",
-                        "Fazer a Declaração Anual (DASN-SIMEI)",
-                        "Entender os benefícios previdenciários",
-                        "Evitar multas e juros"
-                    ]
-                },
-                {
-                    question: "Se você tivesse que escolher, o que mais te preocupa no seu MEI hoje?",
-                    options: [
-                        "Dívidas acumuladas",
-                        "Perder benefícios do INSS",
-                        "O risco de ter o nome sujo",
-                        "Ter que fechar o CNPJ"
-                    ]
-                },
-                {
-                    question: "Qual tipo de conteúdo sobre MEI você mais consome?",
-                    options: [
-                        "Vídeos curtos (Reels, TikTok)",
-                        "Textos informativos (blog posts, artigos)",
-                        "Lives e webinars",
-                        "Áudios ou podcasts"
-                    ]
-                },
-                {
-                    question: "O que mais te motivaria a contratar um serviço de contabilidade para seu MEI?",
-                    options: [
-                        "Custo-benefício e preço acessível",
-                        "Confiança e credibilidade da empresa",
-                        "Facilidade e praticidade do serviço",
-                        "Suporte humanizado e personalizado"
-                    ]
-                }
+                { question: "Qual a principal área de atuação do seu MEI?", options: ["Serviços de beleza e estética", "Comércio varejista", "Serviços de alimentação", "Reparação e manutenção", "Transporte de passageiros"] },
+                { question: "Você já teve ou tem problemas com a inaptidão do seu CNPJ?", options: ["Sim, já tive ou estou com esse problema.", "Não, meu CNPJ está regular.", "Não sei, preciso verificar."] },
+                { question: "Qual desafio você considera mais difícil sozinho?", options: ["Regularizar pendências e dívidas", "Fazer a Declaração Anual", "Entender benefícios INSS", "Evitar multas e juros"] },
+                { question: "O que mais te preocupa no seu MEI hoje?", options: ["Dívidas acumuladas", "Perder benefícios do INSS", "O risco de ter o nome sujo", "Ter que fechar o CNPJ"] },
+                { question: "Qual tipo de conteúdo sobre MEI você consome?", options: ["Vídeos curtos", "Textos informativos", "Lives e webinars", "Áudios ou podcasts"] },
+                { question: "O que te motivaria a contratar contabilidade?", options: ["Custo-benefício e preço acessível", "Confiança e credibilidade", "Facilidade e praticidade", "Suporte humanizado e personalizado"] }
             ];
 
             let currentQuestionIndex = 0;
-            const userAnswers = [];
 
             function displayQuestion() {
                 if (currentQuestionIndex < questions.length) {
@@ -207,75 +182,29 @@
                         button.onclick = () => handleAnswer(option);
                         optionsContainer.appendChild(button);
                     });
-
-                    // Update progress bar
-                    const progress = ((currentQuestionIndex) / questions.length) * 100;
-                    progressFill.style.width = `${progress}%`;
+                    progressFill.style.width = `${(currentQuestionIndex / questions.length) * 100}%`;
                     progressText.textContent = `Pergunta ${currentQuestionIndex + 1} de ${questions.length}`;
-
-                } else {
-                    // Quiz finished
-                    progressFill.style.width = '100%';
-                    progressText.textContent = ``;
-                    questionCard.classList.add('hidden');
-                    thankYouMessage.classList.remove('hidden');
-                    
-                    // You can send the results to your server here
-                    console.log('Quiz concluído! Respostas do usuário:', userAnswers);
                 }
             }
 
-            function hideAllCTAs() {
-                ctaUrgente.classList.add('hidden');
-                ctaCusto.classList.add('hidden');
-                ctaConfianca.classList.add('hidden');
-                ctaPraticidade.classList.add('hidden');
-                ctaSuporte.classList.add('hidden');
-                thankYouMessage.classList.add('hidden');
-            }
-
             function handleAnswer(answer) {
-                userAnswers.push({
-                    question: questions[currentQuestionIndex].question,
-                    answer: answer
-                });
+                // Lógica de desvio para CTAs urgentes
+                if ((currentQuestionIndex === 1 && answer.includes("Sim")) || 
+                    (currentQuestionIndex === 2 && (answer.includes("Regularizar") || answer.includes("Evitar multas"))) ||
+                    (currentQuestionIndex === 3 && (answer.includes("Dívidas") || answer.includes("fechar")))) {
+                    showFinalCTA('cta-urgente');
+                    return;
+                }
 
-                // Verificação de respostas que indicam leads de alto valor
-                if (currentQuestionIndex === 1 && answer === "Sim, já tive ou estou com esse problema.") {
-                    questionCard.classList.add('hidden');
-                    hideAllCTAs();
-                    ctaUrgente.classList.remove('hidden');
-                    return; // Encerra o quiz e mostra o CTA imediato
-                } else if (currentQuestionIndex === 2 && (answer === "Regularizar pendências e dívidas" || answer === "Evitar multas e juros")) {
-                     questionCard.classList.add('hidden');
-                    hideAllCTAs();
-                    ctaUrgente.classList.remove('hidden');
-                    return;
-                } else if (currentQuestionIndex === 3 && (answer === "Dívidas acumuladas" || answer === "Ter que fechar o CNPJ")) {
-                     questionCard.classList.add('hidden');
-                    hideAllCTAs();
-                    ctaUrgente.classList.remove('hidden');
-                    return;
-                } else if (currentQuestionIndex === 5) {
-                    questionCard.classList.add('hidden');
-                    hideAllCTAs();
-                    switch (answer) {
-                        case "Custo-benefício e preço acessível":
-                            ctaCusto.classList.remove('hidden');
-                            break;
-                        case "Confiança e credibilidade da empresa":
-                            ctaConfianca.classList.remove('hidden');
-                            break;
-                        case "Facilidade e praticidade do serviço":
-                            ctaPraticidade.classList.remove('hidden');
-                            break;
-                        case "Suporte humanizado e personalizado":
-                            ctaSuporte.classList.remove('hidden');
-                            break;
-                        default:
-                            thankYouMessage.classList.remove('hidden');
-                            break;
-                    }
+                if (currentQuestionIndex === 5) {
+                    const mapping = {
+                        "Custo-benefício": "cta-custo",
+                        "Confiança": "cta-confianca",
+                        "Facilidade": "cta-praticidade",
+                        "Suporte": "cta-suporte"
+                    };
+                    const key = Object.keys(mapping).find(k => answer.includes(k)) || "thank-you";
+                    showFinalCTA(mapping[key] || "thank-you");
                     return;
                 }
 
@@ -283,10 +212,16 @@
                 displayQuestion();
             }
 
-            // Initial display
+            function showFinalCTA(id) {
+                questionCard.classList.add('hidden');
+                progressFill.style.width = '100%';
+                progressText.textContent = '';
+                resultsArea.classList.remove('hidden');
+                document.getElementById(id).classList.remove('hidden');
+            }
+
             displayQuestion();
         });
     </script>
 </body>
-
 </html>
