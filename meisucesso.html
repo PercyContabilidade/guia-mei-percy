@@ -3,231 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Questionário Rápido — Perfil do MEI de Sucesso</title>
-
-    <meta property="og:title" content="Questionário Rápido — Perfil do MEI de Sucesso"/>
-    <meta property="og:description" content="Descubra o que torna um MEI bem-sucedido! Responda e ajude-nos a criar conteúdo para o seu crescimento."/>
-    <meta property="og:image" content="https://percycontabilidade.com.br/logochegueisoumei.jpeg"/>
-    <meta property="og:url" content="https://percycontabilidade.com.br/chegueimeisucesso"/>
-    <meta property="og:type" content="website"/>
-    
+    <title>DIAMANTE EXCELSIO — Perfil do MEI de Sucesso</title>
     <style>
         :root {
-            --primary-color: #008080; /* Teal Percy */
-            --secondary-color: #2c3e50;
-            --bg-color: #f4f7f6;
+            --percy-teal: #008080;
+            --percy-gold: #c5a059; /* Toque Diamante/Ouro */
+            --percy-dark: #1a2a2a;
+            --bg-body: #ececec;
         }
 
         body { 
-            margin: 0; 
-            padding: 20px; 
-            background-color: var(--bg-color); 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #333;
+            margin: 0; padding: 10px; background-color: var(--bg-body); 
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
-        .container {
-            max-width: 600px; 
-            margin: 20px auto; 
-            padding: 30px; 
-            background-color: #fff; 
-            border-radius: 12px; 
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        .main-card {
+            max-width: 850px; margin: 20px auto; background: #fff;
+            border-top: 6px solid var(--percy-teal);
+            border-radius: 4px; box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            overflow: hidden;
         }
 
-        .nav-back {
-            display: inline-block;
-            margin-bottom: 20px;
-            color: var(--primary-color);
-            text-decoration: none;
-            font-size: 0.9em;
-            font-weight: bold;
+        .top-bar {
+            background: var(--percy-dark); color: var(--percy-gold);
+            padding: 10px; text-align: center; font-weight: bold;
+            letter-spacing: 2px; font-size: 0.8em; border-bottom: 1px solid var(--percy-gold);
         }
 
-        .header-logo {
-            text-align: center; 
-            margin-bottom: 30px;
+        .header { text-align: center; padding: 30px 20px 10px; }
+        .header h1 { color: var(--percy-teal); margin: 10px 0; font-size: 1.8em; text-transform: uppercase; }
+
+        /* Grid System - 2 Colunas */
+        .grid-survey {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            padding: 20px 40px;
         }
 
-        h2 {
-            color: var(--primary-color); 
-            border-bottom: 3px solid var(--primary-color); 
-            padding-bottom: 10px; 
-            margin-top: 0; 
-            font-size: 1.5em;
-            text-align: center;
+        .question-box {
+            background: #f9f9f9; padding: 15px; border-left: 3px solid var(--percy-gold);
+            border-radius: 0 4px 4px 0;
         }
 
-        .question-block {
-            margin-bottom: 25px;
-            padding: 15px;
-            border-radius: 8px;
-            transition: background 0.3s;
-        }
+        .full-width { grid-column: 1 / span 2; }
 
-        .question-block:hover {
-            background-color: #fafafa;
+        p { margin: 0 0 10px 0; font-size: 0.95em; color: var(--percy-dark); font-weight: 600; }
+        
+        label { 
+            display: block; margin-bottom: 6px; font-size: 0.85em; 
+            cursor: pointer; transition: 0.2s; 
         }
-
-        p strong {
-            display: block;
-            margin-bottom: 12px;
-            color: var(--secondary-color);
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            cursor: pointer;
-            font-size: 0.95em;
-        }
+        label:hover { color: var(--percy-teal); }
 
         input[type="text"] {
-            border: none;
-            border-bottom: 2px solid #ddd;
-            padding: 5px;
-            outline: none;
-            transition: border-color 0.3s;
-            background: transparent;
+            width: 100%; border: none; border-bottom: 1px solid #ccc;
+            padding: 8px 0; outline: none; transition: 0.3s;
+        }
+        input[type="text"]:focus { border-bottom: 2px solid var(--percy-teal); }
+
+        /* Rodapé e Botão Águia */
+        .footer-action {
+            background: var(--percy-dark); padding: 40px; text-align: center;
+            margin-top: 20px;
         }
 
-        input[type="text"]:focus {
-            border-bottom-color: var(--primary-color);
+        .btn-eagle {
+            background: transparent; color: var(--percy-gold);
+            border: 2px solid var(--percy-gold);
+            padding: 15px 40px; font-size: 1.1em; font-weight: bold;
+            text-transform: uppercase; cursor: pointer; letter-spacing: 2px;
+            transition: all 0.4s ease; border-radius: 2px;
         }
 
-        .btn-submit {
-            background-color: var(--primary-color); 
-            color: white; 
-            padding: 15px 20px; 
-            border: none; 
-            border-radius: 8px; 
-            cursor: pointer; 
-            display: block; 
-            width: 100%; 
-            font-size: 1.1em;
-            font-weight: bold;
-            transition: transform 0.2s, background 0.3s;
+        .btn-eagle:hover {
+            background: var(--percy-gold); color: var(--percy-dark);
+            box-shadow: 0 0 20px rgba(197, 160, 89, 0.4);
         }
 
-        .btn-submit:hover {
-            background-color: #006666;
-            transform: translateY(-2px);
-        }
+        .percy-branding { margin-top: 20px; opacity: 0.7; font-size: 0.7em; color: #fff; }
 
-        .footer {
-            background-color: var(--secondary-color); 
-            color: #ecf0f1; 
-            padding: 25px; 
-            margin-top: 40px; 
-            border-radius: 12px; 
-            text-align: center;
+        /* Mobile */
+        @media (max-width: 600px) {
+            .grid-survey { grid-template-columns: 1fr; padding: 15px; }
+            .full-width { grid-column: 1; }
         }
-
-        .footer a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 8px;
-            font-size: 0.85em;
-            opacity: 0.8;
-        }
-
-        .footer a:hover {
-            opacity: 1;
-            text-decoration: underline;
-        }
-
-        hr { border: 0; border-top: 1px solid #eee; margin: 20px 0; }
     </style>
 </head>
 <body>
 
-<div class="container">
-    
-    <a href="https://github.com/PercyContabilidade/consultoria" class="nav-back">← Voltar para Consultoria</a>
+<div class="main-card">
+    <div class="top-bar">DIAMANTE EXCELSIO TOP ONE</div>
 
-    <div class="header-logo">
-        <img src="https://percycontabilidade.com.br/logochegueisoumei.jpeg" alt="Logo Cheguei Sou MEI" width="120">
+    <div class="header">
+        <img src="https://percycontabilidade.com.br/logochegueisoumei.jpeg" alt="Logo" width="80">
+        <h1>Perfil do MEI de Sucesso</h1>
     </div>
 
-    <form name="formulario-mei-sucesso" method="POST" data-netlify="true">
-        
-        <input type="hidden" name="form-name" value="formulario-mei-sucesso" />
+    <form name="formulario-mei-excelso" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="formulario-mei-excelso" />
 
-        <h2>✅ Perfil do MEI de Sucesso</h2>
-        <p style="text-align: center; font-size: 0.9em; color: #666;">Analise seu momento e ajude-nos a traçar estratégias inteligentes.</p>
+        <div class="grid-survey">
+            <div class="question-box">
+                <p>1. Segmento de Atuação</p>
+                <label><input type="radio" name="seg" value="Alimentação" required> Alimentação</label>
+                <label><input type="radio" name="seg" value="Beleza"> Beleza/Estética</label>
+                <label><input type="radio" name="seg" value="Serviços"> Serviços Gerais</label>
+                <label><input type="radio" name="seg" value="Outro"> Outro: <input type="text" name="seg_outro" style="width:50%"></label>
+            </div>
 
-        <div class="question-block">
-            <p><strong>🟡 1. Qual é o seu segmento de atuação?</strong></p>
-            <label><input type="radio" name="segmento" value="Alimentação" required> Alimentação</label>
-            <label><input type="radio" name="segmento" value="Beleza/Estética"> Beleza/Estética</label>
-            <label><input type="radio" name="segmento" value="Moda"> Moda</label>
-            <label><input type="radio" name="segmento" value="Serviços gerais"> Serviços gerais</label>
-            <label><input type="radio" name="segmento" value="Artesanato"> Artesanato</label>
-            <label><input type="radio" name="segmento" value="Tecnologia"> Tecnologia</label>
-            <label>
-                <input type="radio" name="segmento" value="Outro"> Outro: 
-                <input type="text" name="segmento_outro" placeholder="Especifique..." style="width: 60%;">
-            </label>
+            <div class="question-box">
+                <p>2. Tempo de Jornada</p>
+                <label><input type="radio" name="tempo" value="Recente" required> Menos de 6 meses</label>
+                <label><input type="radio" name="tempo" value="Intermediário"> Entre 6 meses e 1 ano</label>
+                <label><input type="radio" name="tempo" value="Veterano"> Mais de 1 ano</label>
+            </div>
+
+            <div class="question-box">
+                <p>3. Maior Desafio no Início</p>
+                <label><input type="radio" name="dor" value="Clientes" required> Atrair Clientes</label>
+                <label><input type="radio" name="dor" value="Finanças"> Organizar Finanças</label>
+                <label><input type="radio" name="dor" value="Burocracia"> Burocracia/Impostos</label>
+            </div>
+
+            <div class="question-box">
+                <p>4. Próximo Grande Salto</p>
+                <label><input type="radio" name="alvo" value="Escala" required> Escalar/Contratar</label>
+                <label><input type="radio" name="alvo" value="Sede"> Viver apenas do negócio</label>
+                <label><input type="radio" name="alvo" value="ME"> Migrar para ME</label>
+            </div>
+
+            <div class="question-box full-width">
+                <p>5. Definição de Sucesso: Para você, ser MEI de sucesso é...</p>
+                <input type="text" name="visao" placeholder="Escreva sua visão estratégica aqui..." required>
+            </div>
         </div>
 
-        <hr>
-
-        <div class="question-block">
-            <p><strong>🔥 2. Quando você formalizou seu MEI?</strong></p>
-            <label><input type="radio" name="tempo_mei" value="Menos de 6 meses" required> Menos de 6 meses</label>
-            <label><input type="radio" name="tempo_mei" value="Entre 6 meses e 1 ano"> Entre 6 meses e 1 ano</label>
-            <label><input type="radio" name="tempo_mei" value="Mais de 1 ano"> Mais de 1 ano</label>
+        <div class="footer-action">
+            <button type="submit" class="btn-eagle">
+                ENVIAR E ALÇAR VOO
+            </button>
+            <div class="percy-branding">
+                © 2025 PERCY CONTABILIDADE - NEGÓCIOS INTELIGENTES<br>
+                DESIGNED FOR HIGH PERFORMANCE
+            </div>
         </div>
-
-        <hr>
-
-        <div class="question-block">
-            <p><strong>💬 3. Qual foi sua maior dificuldade no início?</strong></p>
-            <label><input type="radio" name="dificuldade_inicio" value="Atrair clientes" required> Atrair clientes</label>
-            <label><input type="radio" name="dificuldade_inicio" value="Divulgar meu negócio"> Divulgar meu negócio</label>
-            <label><input type="radio" name="dificuldade_inicio" value="Organizar finanças"> Organizar finanças</label>
-            <label><input type="radio" name="dificuldade_inicio" value="Entender burocracias"> Entender burocracias</label>
-            <label><input type="radio" name="dificuldade_inicio" value="Mentalidade"> Acreditar que era possível crescer</label>
-        </div>
-
-        <hr>
-
-        <div class="question-block">
-            <p><strong>🎯 4. Qual é o seu maior objetivo hoje?</strong></p>
-            <label><input type="radio" name="objetivo" value="Viver do negócio" required> Viver exclusivamente do meu negócio</label>
-            <label><input type="radio" name="objetivo" value="Equipe"> Escalar e contratar equipe</label>
-            <label><input type="radio" name="objetivo" value="Faturamento"> Aumentar faturamento</label>
-            <label><input type="radio" name="objetivo" value="Migrar ME"> Migrar para ME ou outro modelo</label>
-        </div>
-
-        <hr>
-
-        <div class="question-block">
-            <p><strong>✨ 5. Ser MEI de sucesso é...</strong></p>
-            <input type="text" name="definicao_sucesso" placeholder="Sua definição em poucas palavras..." required style="width: 100%; border-bottom: 1px solid var(--primary-color);">
-        </div>
-
-        <br>
-
-        <button type="submit" class="btn-submit">
-            Enviar para Percy Contabilidade
-        </button>
-        
     </form>
-    
-    <div class="footer">
-        <img src="https://percycontabilidade.com.br/logopercyatual.jpeg" alt="Percy Contabilidade" width="130" style="margin-bottom: 15px;">
-        <p style="font-size: 11px; margin-bottom: 20px;">
-            © 2025 Percy Contabilidade - Negócios Inteligentes.<br>
-            Consultoria para Microempreendedores de Sucesso.
-        </p>
-
-        <div>
-            <a href="https://www.instagram.com/percycontabilidade" target="_blank">Instagram</a>
-            <a href="https://wa.me/5521979667707" target="_blank">WhatsApp</a>
-            <a href="https://www.youtube.com/@percycontabilidade" target="_blank">YouTube</a>
-        </div>
-    </div>
 </div>
 
 </body>
