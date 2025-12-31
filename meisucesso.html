@@ -11,149 +11,223 @@
     <meta property="og:url" content="https://percycontabilidade.com.br/chegueimeisucesso"/>
     <meta property="og:type" content="website"/>
     
-    <meta name="netlify-success" content="/sucesso.html" /> 
-
     <style>
-        /* Estilos básicos */
-        body { margin: 0; padding: 0; background-color: #f4f4f4; }
+        :root {
+            --primary-color: #008080; /* Teal Percy */
+            --secondary-color: #2c3e50;
+            --bg-color: #f4f7f6;
+        }
+
+        body { 
+            margin: 0; 
+            padding: 20px; 
+            background-color: var(--bg-color); 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px; 
+            margin: 20px auto; 
+            padding: 30px; 
+            background-color: #fff; 
+            border-radius: 12px; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .nav-back {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+
+        .header-logo {
+            text-align: center; 
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: var(--primary-color); 
+            border-bottom: 3px solid var(--primary-color); 
+            padding-bottom: 10px; 
+            margin-top: 0; 
+            font-size: 1.5em;
+            text-align: center;
+        }
+
+        .question-block {
+            margin-bottom: 25px;
+            padding: 15px;
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+
+        .question-block:hover {
+            background-color: #fafafa;
+        }
+
+        p strong {
+            display: block;
+            margin-bottom: 12px;
+            color: var(--secondary-color);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            cursor: pointer;
+            font-size: 0.95em;
+        }
+
+        input[type="text"] {
+            border: none;
+            border-bottom: 2px solid #ddd;
+            padding: 5px;
+            outline: none;
+            transition: border-color 0.3s;
+            background: transparent;
+        }
+
+        input[type="text"]:focus {
+            border-bottom-color: var(--primary-color);
+        }
+
+        .btn-submit {
+            background-color: var(--primary-color); 
+            color: white; 
+            padding: 15px 20px; 
+            border: none; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            display: block; 
+            width: 100%; 
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: transform 0.2s, background 0.3s;
+        }
+
+        .btn-submit:hover {
+            background-color: #006666;
+            transform: translateY(-2px);
+        }
+
+        .footer {
+            background-color: var(--secondary-color); 
+            color: #ecf0f1; 
+            padding: 25px; 
+            margin-top: 40px; 
+            border-radius: 12px; 
+            text-align: center;
+        }
+
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 8px;
+            font-size: 0.85em;
+            opacity: 0.8;
+        }
+
+        .footer a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        hr { border: 0; border-top: 1px solid #eee; margin: 20px 0; }
     </style>
 </head>
 <body>
 
-<div style="max-width: 600px; margin: 40px auto; padding: 20px; font-family: Arial, sans-serif; background-color: #fff; border: 1px solid #e0e0e0; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.05);">
+<div class="container">
+    
+    <a href="https://github.com/PercyContabilidade/consultoria" class="nav-back">← Voltar para Consultoria</a>
 
-    <div style="text-align: center; margin-bottom: 20px;">
-        <img src="logochegueisoumei.jpeg" alt="Logo Cheguei Sou MEI de Sucesso" width="100">
+    <div class="header-logo">
+        <img src="https://percycontabilidade.com.br/logochegueisoumei.jpeg" alt="Logo Cheguei Sou MEI" width="120">
     </div>
 
-    <form name="formulario-mei" method="POST" netlify action="/sucesso.html">
+    <form name="formulario-mei-sucesso" method="POST" data-netlify="true">
         
-        <input type="hidden" name="form-name" value="formulario-mei" />
+        <input type="hidden" name="form-name" value="formulario-mei-sucesso" />
 
-        <h2 style="color: #008080; border-bottom: 2px solid #008080; padding-bottom: 5px; margin-top: 0; font-size: 1.4em;">
-            ✅ Questionário Rápido — Perfil do MEI de Sucesso
-        </h2>
+        <h2>✅ Perfil do MEI de Sucesso</h2>
+        <p style="text-align: center; font-size: 0.9em; color: #666;">Analise seu momento e ajude-nos a traçar estratégias inteligentes.</p>
 
-        <p><strong>🟡 1. Qual é o seu segmento de atuação como MEI?</strong></p>
-        <label><input type="radio" name="segmento" value="Alimentação" required> Alimentação</label><br>
-        <label><input type="radio" name="segmento" value="Beleza/Estética"> Beleza/Estética</label><br>
-        <label><input type="radio" name="segmento" value="Moda"> Moda</label><br>
-        <label><input type="radio" name="segmento" value="Serviços gerais"> Serviços gerais</label><br>
-        <label><input type="radio" name="segmento" value="Artesanato"> Artesanato</label><br>
-        <label><input type="radio" name="segmento" value="Tecnologia"> Tecnologia</label><br>
-        <label>
-            <input type="radio" name="segmento" value="Outro"> Outro: 
-            <input type="text" name="segmento_outro" placeholder="Especifique aqui..." style="border: none; border-bottom: 1px dashed #ccc; width: 60%;">
-        </label>
+        <div class="question-block">
+            <p><strong>🟡 1. Qual é o seu segmento de atuação?</strong></p>
+            <label><input type="radio" name="segmento" value="Alimentação" required> Alimentação</label>
+            <label><input type="radio" name="segmento" value="Beleza/Estética"> Beleza/Estética</label>
+            <label><input type="radio" name="segmento" value="Moda"> Moda</label>
+            <label><input type="radio" name="segmento" value="Serviços gerais"> Serviços gerais</label>
+            <label><input type="radio" name="segmento" value="Artesanato"> Artesanato</label>
+            <label><input type="radio" name="segmento" value="Tecnologia"> Tecnologia</label>
+            <label>
+                <input type="radio" name="segmento" value="Outro"> Outro: 
+                <input type="text" name="segmento_outro" placeholder="Especifique..." style="width: 60%;">
+            </label>
+        </div>
 
-        <hr style="border: 0; border-top: 1px solid #eee; margin: 15px 0;">
+        <hr>
 
-        <p><strong>🔥 2. Quando você formalizou seu MEI?</strong></p>
-        <label><input type="radio" name="tempo_mei" value="Menos de 6 meses" required> Menos de 6 meses</label><br>
-        <label><input type="radio" name="tempo_mei" value="Entre 6 meses e 1 ano"> Entre 6 meses e 1 ano</label><br>
-        <label><input type="radio" name="tempo_mei" value="Mais de 1 ano"> Mais de 1 ano</label>
+        <div class="question-block">
+            <p><strong>🔥 2. Quando você formalizou seu MEI?</strong></p>
+            <label><input type="radio" name="tempo_mei" value="Menos de 6 meses" required> Menos de 6 meses</label>
+            <label><input type="radio" name="tempo_mei" value="Entre 6 meses e 1 ano"> Entre 6 meses e 1 ano</label>
+            <label><input type="radio" name="tempo_mei" value="Mais de 1 ano"> Mais de 1 ano</label>
+        </div>
 
-        <hr style="border: 0; border-top: 1px solid #eee; margin: 15px 0;">
+        <hr>
 
-        <p><strong>💬 3. Qual foi sua maior dificuldade no início?</strong></p>
-        <label><input type="radio" name="dificuldade_inicio" value="Atrair clientes" required> Atrair clientes</label><br>
-        <label><input type="radio" name="dificuldade_inicio" value="Divulgar meu negócio"> Divulgar meu negócio</label><br>
-        <label><input type="radio" name="dificuldade_inicio" value="Organizar finanças"> Organizar finanças</label><br>
-        <label><input type="radio" name="dificuldade_inicio" value="Entender burocracias"> Entender burocracias</label><br>
-        <label><input type="radio" name="dificuldade_inicio" value="Acreditar que era possível crescer"> Acreditar que era possível crescer</label><br>
-        <label>
-            <input type="radio" name="dificuldade_inicio" value="Outro"> Outro:
-            <input type="text" name="dificuldade_outro" placeholder="Especifique aqui..." style="border: none; border-bottom: 1px dashed #ccc; width: 60%;">
-        </label>
+        <div class="question-block">
+            <p><strong>💬 3. Qual foi sua maior dificuldade no início?</strong></p>
+            <label><input type="radio" name="dificuldade_inicio" value="Atrair clientes" required> Atrair clientes</label>
+            <label><input type="radio" name="dificuldade_inicio" value="Divulgar meu negócio"> Divulgar meu negócio</label>
+            <label><input type="radio" name="dificuldade_inicio" value="Organizar finanças"> Organizar finanças</label>
+            <label><input type="radio" name="dificuldade_inicio" value="Entender burocracias"> Entender burocracias</label>
+            <label><input type="radio" name="dificuldade_inicio" value="Mentalidade"> Acreditar que era possível crescer</label>
+        </div>
 
-        <hr style="border: 0; border-top: 1px solid #eee; margin: 15px 0;">
+        <hr>
 
-        <p><strong>💡 4. O que mais te ajudou a crescer como MEI?</strong></p>
-        <label><input type="radio" name="ajuda_crescimento" value="Cursos e mentorias" required> Cursos e mentorias</label><br>
-        <label><input type="radio" name="ajuda_crescimento" value="Marketing digital"> Marketing digital</label><br>
-        <label><input type="radio" name="ajuda_crescimento" value="Networking com outros empreendedores"> Networking com outros empreendedores</label><br>
-        <label><input type="radio" name="ajuda_crescimento" value="Organização financeira"> Organização financeira</label><br>
-        <label><input type="radio" name="ajuda_crescimento" value="Mudança de mentalidade"> Mudança de mentalidade</label><br>
-        <label>
-            <input type="radio" name="ajuda_crescimento" value="Outro"> Outro:
-            <input type="text" name="ajuda_outro" placeholder="Especifique aqui..." style="border: none; border-bottom: 1px dashed #ccc; width: 60%;">
-        </label>
+        <div class="question-block">
+            <p><strong>🎯 4. Qual é o seu maior objetivo hoje?</strong></p>
+            <label><input type="radio" name="objetivo" value="Viver do negócio" required> Viver exclusivamente do meu negócio</label>
+            <label><input type="radio" name="objetivo" value="Equipe"> Escalar e contratar equipe</label>
+            <label><input type="radio" name="objetivo" value="Faturamento"> Aumentar faturamento</label>
+            <label><input type="radio" name="objetivo" value="Migrar ME"> Migrar para ME ou outro modelo</label>
+        </div>
 
-        <hr style="border: 0; border-top: 1px solid #eee; margin: 15px 0;">
+        <hr>
 
-        <p><strong>🎯 5. Qual é o seu maior objetivo hoje como MEI?</strong></p>
-        <label><input type="radio" name="objetivo_hoje" value="Viver exclusivamente do meu negócio" required> Viver exclusivamente do meu negócio</label><br>
-        <label><input type="radio" name="objetivo_hoje" value="Escalar e contratar equipe"> Escalar e contratar equipe</label><br>
-        <label><input type="radio" name="objetivo_hoje" value="Aumentar faturamento"> Aumentar faturamento</label><br>
-        <label><input type="radio" name="objetivo_hoje" value="Migrar para ME ou outro modelo"> Migrar para ME ou outro modelo</label><br>
-        <label><input type="radio" name="objetivo_hoje" value="Ter liberdade de tempo e geográfica"> Ter liberdade de tempo e geográfica</label><br>
-        <label>
-            <input type="radio" name="objetivo_hoje" value="Outro"> Outro:
-            <input type="text" name="objetivo_outro" placeholder="Especifique aqui..." style="border: none; border-bottom: 1px dashed #ccc; width: 60%;">
-        </label>
+        <div class="question-block">
+            <p><strong>✨ 5. Ser MEI de sucesso é...</strong></p>
+            <input type="text" name="definicao_sucesso" placeholder="Sua definição em poucas palavras..." required style="width: 100%; border-bottom: 1px solid var(--primary-color);">
+        </div>
 
-        <hr style="border: 0; border-top: 1px solid #eee; margin: 15px 0;">
+        <br>
 
-        <p><strong>📱 6. Onde você costuma consumir conteúdo sobre empreendedorismo?</strong></p>
-        <label><input type="checkbox" name="consumo_conteudo" value="Instagram"> Instagram</label><br>
-        <label><input type="checkbox" name="consumo_conteudo" value="YouTube"> YouTube</label><br>
-        <label><input type="checkbox" name="consumo_conteudo" value="Podcasts"> Podcasts</label><br>
-        <label><input type="checkbox" name="consumo_conteudo" value="TikTok"> TikTok</label><br>
-        <label><input type="checkbox" name="consumo_conteudo" value="Cursos online"> Cursos online</label><br>
-        <label>
-            <input type="checkbox" name="consumo_conteudo" value="Outro"> Outro:
-            <input type="text" name="consumo_outro" placeholder="Especifique aqui..." style="border: none; border-bottom: 1px dashed #ccc; width: 60%;">
-        </label>
-
-        <hr style="border: 0; border-top: 1px solid #eee; margin: 15px 0;">
-
-        <p><strong>🧠 7. Qual tipo de conteúdo mais te atrai?</strong></p>
-        <label><input type="checkbox" name="tipo_conteudo" value="Direto e prático"> Direto e prático</label><br>
-        <label><input type="checkbox" name="tipo_conteudo" value="Inspirador e emocional"> Inspirador e emocional</label><br>
-        <label><input type="checkbox" name="tipo_conteudo" value="Técnico e detalhado"> Técnico e detalhado</label><br>
-        <label><input type="checkbox" name="tipo_conteudo" value="Com histórias reais"> Com histórias reais</label><br>
-        <label>
-            <input type="checkbox" name="tipo_conteudo" value="Outro"> Outro:
-            <input type="text" name="tipo_outro" placeholder="Especifique aqui..." style="border: none; border-bottom: 1px dashed #ccc; width: 60%;">
-        </label>
-
-        <hr style="border: 0; border-top: 1px solid #eee; margin: 15px 0;">
-
-        <p><strong>✨ 8. Complete a frase: Ser MEI de sucesso é...</strong></p>
-        <label>
-            📝 Resposta curta:
-            <input type="text" name="definicao_sucesso" size="60" placeholder="Escreva sua definição de sucesso em poucas palavras..." required style="border: none; border-bottom: 1px solid #000; width: 90%;">
-        </label>
-        
-        <br><br>
-
-        <button type="submit" style="background-color: #008080; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; display: block; width: 100%; font-size: 1.1em;">
-            Enviar Respostas
+        <button type="submit" class="btn-submit">
+            Enviar para Percy Contabilidade
         </button>
         
     </form>
     
-    <div style="background-color: #2c3e50; color: #ecf0f1; padding: 20px 0; margin-top: 30px; border-radius: 0 0 8px 8px; text-align: center;">
-        
-        <img src="logopercyatual.jpeg" alt="Logo Percy Contabilidade - Negócios Inteligentes" width="120" style="margin-bottom: 15px;">
-        
-        <hr style="border: 0; border-top: 1px solid #3b5062; width: 80%; margin: 10px auto;">
-        
-        <p style="font-size: 10px; margin: 10px 0;">
-            © 2025 Percy Contabilidade. Todos os direitos reservados.
-        </p>
-        <p style="font-size: 10px; margin: 0 0 15px 0;">
-            Este é um guia educativo. Para decisões sobre seu negócio, consulte sempre um contador.
+    <div class="footer">
+        <img src="https://percycontabilidade.com.br/logopercyatual.jpeg" alt="Percy Contabilidade" width="130" style="margin-bottom: 15px;">
+        <p style="font-size: 11px; margin-bottom: 20px;">
+            © 2025 Percy Contabilidade - Negócios Inteligentes.<br>
+            Consultoria para Microempreendedores de Sucesso.
         </p>
 
-        <p>
-            <a href="https://www.instagram.com/percycontabilidade" style="color: #ffffff; text-decoration: none; margin: 0 5px; font-size: 12px;" target="_blank">Instagram</a> |
-            <a href="https://www.facebook.com/percycontabilidade" style="color: #ffffff; text-decoration: none; margin: 0 5px; font-size: 12px;" target="_blank">Facebook</a> |
-            <a href="https://www.youtube.com/@percycontabilidade" style="color: #ffffff; text-decoration: none; margin: 0 5px; font-size: 12px;" target="_blank">YouTube</a> |
-            <a href="https://wa.me/5521979667707" style="color: #ffffff; text-decoration: none; margin: 0 5px; font-size: 12px;" target="_blank">WhatsApp</a>
-        </p>
+        <div>
+            <a href="https://www.instagram.com/percycontabilidade" target="_blank">Instagram</a>
+            <a href="https://wa.me/5521979667707" target="_blank">WhatsApp</a>
+            <a href="https://www.youtube.com/@percycontabilidade" target="_blank">YouTube</a>
+        </div>
     </div>
-
 </div>
 
 </body>
