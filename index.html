@@ -1,243 +1,85 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Percy Contabilidade - HUB de Negócios Inteligentes</title>
-    <!-- GPS: Pasta 'css' conforme seu print real e2c662 -->
-    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Índice de Projetos - Percy Contabilidade</title>
     <style>
-        :root { 
-            --gold: #c5a059; 
-            --dark: #0a192f; 
-            --accent: #0b6fb6; 
-            --white: #ffffff;
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 40px;
+            background-color: #f4f4f4;
+            color: #333;
         }
-        
-        body { 
-            margin: 0; 
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
-            background: var(--dark); 
-            color: var(--white); 
-            display: flex; 
-            flex-direction: column; 
-            min-height: 100vh; 
-            overflow-x: hidden; 
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 20px 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        
-        /* CABEÇALHO LIMPO E PREMIUM */
-        .site-header { 
-            padding: 20px; 
-            text-align: center; 
-            border-bottom: 1px solid rgba(197, 160, 89, 0.2); 
-            background: rgba(10, 25, 47, 0.95); 
-            position: sticky; 
-            top: 0; 
-            z-index: 100; 
+        h1, h2, h3 {
+            color: #5d4037;
         }
-        .logo-header { 
-            width: 130px; 
-            border-radius: 10px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        ul {
+            list-style-type: none;
+            padding: 0;
         }
-
-        .main-container { 
-            flex: 1; 
-            max-width: 1200px; 
-            margin: 0 auto; 
-            padding: 40px 20px; 
-            display: flex; 
-            flex-direction: row; 
-            align-items: center; 
-            justify-content: center; 
-            gap: 60px; 
+        li {
+            margin-bottom: 10px;
         }
-
-        @media (max-width: 1024px) {
-            .main-container { 
-                flex-direction: column; 
-                text-align: center; 
-                padding: 20px;
-                gap: 40px;
-            }
+        strong {
+            color: #3e2723;
         }
-
-        /* VÍDEO DO MESTRE CAFER */
-        .video-section { 
-            flex: 0 0 380px; 
-            max-width: 100%;
-        }
-        .video-box { 
-            border: 4px solid var(--gold); 
-            border-radius: 25px; 
-            overflow: hidden; 
-            box-shadow: 0 0 60px rgba(197, 160, 89, 0.25); 
-            background: #000; 
-        }
-        .btn-audio {
-            background: var(--gold);
-            color: var(--dark);
-            padding: 15px;
-            font-weight: 900;
-            text-align: center;
-            cursor: pointer;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            transition: 0.3s;
-        }
-        .btn-audio:hover { background: var(--white); }
-
-        /* PORTAIS DE DECISÃO */
-        .portals-section { 
-            flex: 1; 
-            display: flex; 
-            flex-direction: column; 
-            gap: 20px; 
-            max-width: 550px; 
-        }
-        .portal-headline h1 { 
-            font-size: 3rem; 
-            color: var(--gold); 
-            font-weight: 900; 
-            margin: 0; 
-            line-height: 1;
-            text-transform: uppercase;
-        }
-        .portal-headline p { 
-            font-size: 1.25rem; 
-            opacity: 0.8; 
-            margin: 10px 0 0; 
-        }
-
-        .card-portal { 
-            background: rgba(255, 255, 255, 0.03); 
-            border: 2px solid rgba(197, 160, 89, 0.4); 
-            padding: 30px; 
-            border-radius: 20px; 
-            text-decoration: none; 
-            color: var(--white); 
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-            text-align: center; 
-        }
-        .card-portal:hover { 
-            background: var(--gold); 
-            color: var(--dark); 
-            transform: translateY(-5px); 
-            border-color: var(--white);
-            box-shadow: 0 15px 35px rgba(197, 160, 89, 0.3);
-        }
-        .titulo-projeto { 
-            font-size: 1.8rem; 
-            font-weight: 900; 
-            margin: 0; 
-            text-transform: uppercase;
-        }
-        .desc-projeto {
-            margin-top: 10px;
-            font-size: 0.95rem;
-            opacity: 0.7;
-        }
-
-        .btn-jucerja-container {
-            margin-top: 25px;
-            text-align: center;
-        }
-        .btn-jucerja-link { 
-            display: inline-block; 
-            color: var(--gold); 
-            text-decoration: none; 
-            font-weight: 900; 
-            border: 2px solid var(--gold); 
-            padding: 18px 35px; 
-            border-radius: 15px; 
-            transition: 0.4s; 
-            text-transform: uppercase; 
-            letter-spacing: 2px; 
-            font-size: 0.95rem; 
-            background: rgba(197, 160, 89, 0.08);
-        }
-
-        /* RODAPÉ */
-        .site-footer { 
-            padding: 40px 20px; 
-            background: #060d1a; 
-            text-align: center; 
-            border-top: 1px solid rgba(197, 160, 89, 0.1); 
-        }
-        .footer-logo { width: 80px; margin-bottom: 15px; opacity: 0.5; }
-        .copyright { font-size: 0.75rem; opacity: 0.4; letter-spacing: 1px; }
-
     </style>
 </head>
 <body>
 
-    <header class="site-header">
-        <video autoplay muted loop playsinline class="logo-header">
-            <!-- GPS: Pasta 'videos' e arquivo exato do seu GitHub -->
-            <source src="videos/logo-animada.gif.mp4" type="video/mp4">
-        </video>
-    </header>
+<div class="container">
+    <h1>Índice de Projetos e Documentos da Conversa</h1>
+    <p>Este índice resume todo o trabalho realizado, desde a análise do criativo musical até a criação e teste da sua assinatura sonora e animação de logo.</p>
 
-    <main class="main-container">
-        
-        <section class="video-section">
-            <div class="video-box">
-                <video id="videoMain" autoplay muted playsinline style="width: 100%; display: block;">
-                    <!-- GPS: Pasta 'videos' e arquivo 'cafterboasvindas.mp4' -->
-                    <source src="videos/cafterboasvindas.mp4" type="video/mp4">
-                </video>
-                <div onclick="ativarSom()" class="btn-audio">
-                    🔊 ATIVAR ÁUDIO DA MENSAGEM
-                </div>
-            </div>
-        </section>
+    <hr>
 
-        <section class="portals-section">
-            <div class="portal-headline">
-                <h1>Seja Bem-vindo</h1>
-                <p>À Nova Era da Contabilidade Inteligente.</p>
-            </div>
+    <h2>1. Análise e Adaptação de Criativo Musical</h2>
+    <ul>
+        <li>
+            <strong>Documento:</strong> Análise do Prompt do Criativo Musical (Link de Referência)<br>
+            <small><strong>Descrição:</strong> Detalhamento do prompt do criativo do YouTube, incluindo título, duração, música, ritmo e descrição de cenas.<br>
+            <strong>Recurso:</strong> <a href="https://youtube.com/shorts/Cqimb6NZ5k4?si=5tbBLmIO5Q1_XvDh" target="_blank">https://youtube.com/shorts/Cqimb6NZ5k4?si=5tbBLmIO5Q1_XvDh</a></small>
+        </li>
+        <li>
+            <strong>Documento:</strong> Prompt Criativo para "Percy Contabilidade"<br>
+            <small><strong>Descrição:</strong> Adaptação do prompt musical para um criativo focado nos serviços da Percy Contabilidade, mantendo o mesmo estilo dinâmico.</small>
+        </li>
+    </ul>
 
-            <!-- PROJETO 01: MEI -->
-            <a href="mei/soumeilp.html" class="card-portal">
-                <h2 class="titulo-projeto">CHEGUEI, SOU MEI.</h2>
-                <p class="desc-projeto">Sair da informalidade nunca foi tão estratégico.</p>
-            </a>
+    <h2>2. Criação da Identidade Sonora (Sonic Logo)</h2>
+    <ul>
+        <li>
+            <strong>Documento:</strong> Guia - Percy Assinatura Sonora<br>
+            <small><strong>Descrição:</strong> Um guia completo com a definição do conceito, a essência do nosso sonic logo e um passo a passo para a sua criação e utilização.</small>
+        </li>
+        <li>
+            <strong>Projeto:</strong> Teste da Assinatura Sonora no Murf.ai<br>
+            <small><strong>Descrição:</strong> O processo prático de como usar a plataforma Murf.ai para criar e testar o áudio do sonic logo, com sugestões de filtros, regulagens e considerações sobre os planos pagos.</small>
+        </li>
+    </ul>
 
-            <!-- PROJETO 02: LTDA (ASSESSORIA) - GPS LIMPO -->
-            <a href="https://percycontabilidade.github.io/assessoria/" class="card-portal" style="border-color: var(--accent);">
-                <h2 class="titulo-projeto" style="color: var(--accent);">AVANCEI, SOU LTDA.</h2>
-                <p class="desc-projeto">O próximo nível para negócios de alto impacto.</p>
-            </a>
+    <h2>3. Animação e Sincronização de Logomarca</h2>
+    <ul>
+        <li>
+            <strong>Projeto:</strong> Vídeo Animado da Logomarca (8 segundos)<br>
+            <small><strong>Descrição:</strong> Criação de uma animação para o seu logotipo, com montagem peça por peça, rotação 3D e fundo geométrico.</small>
+        </li>
+        <li>
+            <strong>Projeto:</strong> Teste de Sincronia<br>
+            <small><strong>Descrição:</strong> O vídeo de teste final com a sua logomarca animada, combinada e sincronizada com a assinatura sonora, validando o conceito do projeto.</small>
+        </li>
+    </ul>
+</div>
 
-            <div class="btn-jucerja-container">
-                <a href="jucerja.html" class="btn-jucerja-link">
-                    🚀 Operação WhatsApp Jucerja
-                </a>
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="site-footer">
-        <!-- GPS: Pasta 'images' e arquivo 'logopercyatual.jpeg' -->
-        <img src="images/logopercyatual.jpeg" alt="Percy Contabilidade" class="footer-logo">
-        <p class="copyright">© 2026 PERCY CONTABILIDADE - NEGÓCIOS INTELIGENTES</p>
-    </footer>
-
-    <script>
-        const v = document.getElementById('videoMain');
-        function ativarSom() {
-            v.muted = false;
-            v.currentTime = 0;
-            v.play();
-        }
-        v.onended = function() {
-            v.muted = true;
-            v.loop = true;
-            v.play();
-        };
-    </script>
 </body>
 </html>
