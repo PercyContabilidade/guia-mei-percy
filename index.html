@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Percy Contabilidade - HUB de Negócios Inteligentes</title>
-    <!-- GPS: Pasta 'css' plural conforme print e2c662 -->
+    <!-- GPS: Pasta 'css' conforme seu print real e2c662 -->
     <link rel="stylesheet" href="css/style.css">
     <style>
         :root { 
@@ -25,6 +25,7 @@
             overflow-x: hidden; 
         }
         
+        /* CABEÇALHO LIMPO E PREMIUM */
         .site-header { 
             padding: 20px; 
             text-align: center; 
@@ -61,6 +62,7 @@
             }
         }
 
+        /* VÍDEO DO MESTRE CAFER */
         .video-section { 
             flex: 0 0 380px; 
             max-width: 100%;
@@ -86,6 +88,7 @@
         }
         .btn-audio:hover { background: var(--white); }
 
+        /* PORTAIS DE DECISÃO */
         .portals-section { 
             flex: 1; 
             display: flex; 
@@ -120,7 +123,7 @@
         .card-portal:hover { 
             background: var(--gold); 
             color: var(--dark); 
-            transform: translateY(-5px) scale(1.02); 
+            transform: translateY(-5px); 
             border-color: var(--white);
             box-shadow: 0 15px 35px rgba(197, 160, 89, 0.3);
         }
@@ -155,6 +158,7 @@
             background: rgba(197, 160, 89, 0.08);
         }
 
+        /* RODAPÉ */
         .site-footer { 
             padding: 40px 20px; 
             background: #060d1a; 
@@ -170,7 +174,7 @@
 
     <header class="site-header">
         <video autoplay muted loop playsinline class="logo-header">
-            <!-- GPS: Pasta 'videos' plural conforme print e2c662 -->
+            <!-- GPS: Pasta 'videos' e arquivo exato do seu GitHub -->
             <source src="videos/logo-animada.gif.mp4" type="video/mp4">
         </video>
     </header>
@@ -180,7 +184,7 @@
         <section class="video-section">
             <div class="video-box">
                 <video id="videoMain" autoplay muted playsinline style="width: 100%; display: block;">
-                    <!-- GPS: Pasta 'videos' plural e nome exato do ficheiro -->
+                    <!-- GPS: Pasta 'videos' e arquivo 'cafterboasvindas.mp4' -->
                     <source src="videos/cafterboasvindas.mp4" type="video/mp4">
                 </video>
                 <div onclick="ativarSom()" class="btn-audio">
@@ -201,7 +205,7 @@
                 <p class="desc-projeto">Sair da informalidade nunca foi tão estratégico.</p>
             </a>
 
-            <!-- PROJETO 02: LTDA (ASSESSORIA) - LINK LIMPO PARA O NOVO HANGAR -->
+            <!-- PROJETO 02: LTDA (ASSESSORIA) - GPS LIMPO -->
             <a href="https://percycontabilidade.github.io/assessoria/" class="card-portal" style="border-color: var(--accent);">
                 <h2 class="titulo-projeto" style="color: var(--accent);">AVANCEI, SOU LTDA.</h2>
                 <p class="desc-projeto">O próximo nível para negócios de alto impacto.</p>
@@ -217,7 +221,7 @@
     </main>
 
     <footer class="site-footer">
-        <!-- GPS: Pasta 'images' plural e nome exato do logo -->
+        <!-- GPS: Pasta 'images' e arquivo 'logopercyatual.jpeg' -->
         <img src="images/logopercyatual.jpeg" alt="Percy Contabilidade" class="footer-logo">
         <p class="copyright">© 2026 PERCY CONTABILIDADE - NEGÓCIOS INTELIGENTES</p>
     </footer>
