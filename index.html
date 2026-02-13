@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Portal MEI - Percy Contabilidade</title>
+    <title>Portal MEI - Conscientização Diamante 43.0</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -13,17 +13,19 @@
         .gold-text { color: var(--percy-gold); }
         .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(197, 160, 89, 0.2); }
         
-        /* Botões com contraste garantido */
         .btn-gold-action { background-color: var(--percy-gold); color: #0a192f !important; font-weight: 900; }
         .btn-gold-action:hover { background-color: white; transform: translateY(-3px); }
         
         .fade-in { animation: fadeIn 0.4s ease-out forwards; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .step-pill { width: 40px; height: 6px; border-radius: 10px; background: rgba(255,255,255,0.1); transition: 0.3s; }
+        .step-pill.active { background: var(--percy-gold); box-shadow: 0 0 10px var(--percy-gold); }
     </style>
 </head>
 <body class="min-h-screen flex flex-col">
 
-    <!-- CABEÇALHO -->
+    <!-- CABEÇALHO SOBERANO -->
     <header class="py-6 flex justify-center border-b border-white/10 bg-black/20">
         <a href="https://percycontabilidade.com.br">
             <img src="https://percycontabilidade.com.br/ativos/images/logopercyatual.jpeg" class="w-20 rounded-lg gold-border shadow-xl" alt="Logo Percy">
@@ -32,122 +34,190 @@
 
     <main id="view-port" class="flex-grow container mx-auto px-6 py-12 flex flex-col items-center">
         
-        <!-- MENU PRINCIPAL MEI -->
+        <!-- MENU PRINCIPAL: O PONTO DE PARTIDA -->
         <section id="menu-principal" class="fade-in flex flex-col items-center text-center">
-            <h1 class="text-4xl md:text-5xl font-black gold-text uppercase mb-2 tracking-tighter italic">Cheguei, Sou MEI!</h1>
-            <p class="text-white/60 mb-12 uppercase tracking-[0.3em] text-[10px] font-bold">Diagnóstico Especializado da Família Percy</p>
+            <h1 class="text-4xl md:text-5xl font-black gold-text uppercase mb-2 tracking-tighter italic leading-none">Portal MEI<br><span class="text-white not-italic text-2xl">Gestão & Inteligência</span></h1>
+            <p class="text-white/40 mb-12 uppercase tracking-[0.2em] text-[10px] font-bold">Acompanhamento Sênior para Resultados Reais</p>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-2xl">
-                <button onclick="showSection('abertura')" class="glass-card p-8 rounded-3xl transition-all flex flex-col items-center gap-4 group hover:bg-white/5">
+                <button onclick="startJourney('abertura')" class="glass-card p-8 rounded-3xl transition-all flex flex-col items-center gap-4 group hover:bg-white/5 border-l-4 border-l-percy-gold">
                     <i class="fas fa-rocket text-3xl gold-text"></i>
-                    <span class="font-black uppercase tracking-tight text-white">Abertura de MEI</span>
+                    <div class="text-left w-full">
+                        <span class="block font-black uppercase text-lg leading-none mb-1">Quero abrir meu MEI</span>
+                        <span class="text-[10px] opacity-40 uppercase font-bold">Começar do jeito certo hoje</span>
+                    </div>
                 </button>
 
                 <button onclick="showSection('declaracao')" class="glass-card p-8 rounded-3xl transition-all flex flex-col items-center gap-4 group hover:bg-white/5">
-                    <i class="fas fa-chart-bar text-3xl gold-text"></i>
-                    <span class="font-black uppercase tracking-tight text-white">Declaração Anual</span>
+                    <i class="fas fa-file-signature text-3xl gold-text"></i>
+                    <div class="text-left w-full">
+                        <span class="block font-black uppercase text-lg leading-none mb-1">Declaração Anual</span>
+                        <span class="text-[10px] opacity-40 uppercase font-bold">Segurança perante a Receita</span>
+                    </div>
                 </button>
 
                 <button onclick="showSection('regularizacao')" class="glass-card p-8 rounded-3xl transition-all flex flex-col items-center gap-4 group hover:bg-white/5">
-                    <i class="fas fa-shield-virus text-3xl gold-text"></i>
-                    <span class="font-black uppercase tracking-tight text-white">Regularização DAS</span>
+                    <i class="fas fa-shield-alt text-3xl gold-text"></i>
+                    <div class="text-left w-full">
+                        <span class="block font-black uppercase text-lg leading-none mb-1">Regularização</span>
+                        <span class="text-[10px] opacity-40 uppercase font-bold">Limpar dívidas e pendências</span>
+                    </div>
                 </button>
 
-                <a href="https://percycontabilidade.com.br" class="glass-card p-8 rounded-3xl border-white/10 hover:bg-white hover:text-[#0a192f] transition-all flex flex-col items-center gap-4 group">
-                    <i class="fas fa-house-user text-3xl"></i>
-                    <span class="font-black uppercase tracking-tight">Voltar à Nave Mãe</span>
+                <a href="https://percycontabilidade.com.br" class="glass-card p-8 rounded-3xl border-white/10 hover:bg-white hover:text-[#0a192f] transition-all flex flex-col items-center justify-center">
+                    <span class="font-black uppercase tracking-widest text-xs">Voltar à Nave Mãe</span>
                 </a>
             </div>
         </section>
 
-        <!-- SEÇÃO ABERTURA: QUIZ -->
-        <section id="section-abertura" class="hidden w-full max-w-xl fade-in">
-            <div class="glass-card p-10 rounded-[2.5rem] flex flex-col items-center text-center">
-                <i class="fas fa-rocket text-4xl gold-text mb-6"></i>
-                <h2 class="text-2xl font-black uppercase mb-4">Seu CNPJ está pronto?</h2>
-                <div id="quiz-abertura-content">
-                    <p class="text-white/70 mb-8 leading-relaxed">Responda 3 perguntas rápidas para garantirmos que você comece com o pé direito.</p>
-                    <button onclick="runQuiz('abertura')" class="w-full py-5 rounded-2xl btn-gold-action uppercase tracking-widest text-sm shadow-xl">Iniciar Diagnóstico</button>
+        <!-- SEÇÃO DE JORNADA (DINÂMICA) -->
+        <section id="journey-section" class="hidden w-full max-w-xl fade-in">
+            <div class="glass-card p-10 rounded-[2.5rem] flex flex-col items-center">
+                
+                <!-- Barra de Conscientização -->
+                <div class="flex gap-2 mb-10">
+                    <div id="pill-1" class="step-pill active"></div>
+                    <div id="pill-2" class="step-pill"></div>
+                    <div id="pill-3" class="step-pill"></div>
                 </div>
-                <button onclick="resetView()" class="mt-8 text-[10px] opacity-40 uppercase font-bold hover:opacity-100"><i class="fas fa-arrow-left mr-2"></i> Voltar ao Menu</button>
+
+                <div id="journey-content" class="text-center w-full">
+                    <!-- Conteúdo via JS -->
+                </div>
+
+                <div class="mt-12 w-full flex flex-col items-center gap-4">
+                    <button onclick="resetPortal()" class="text-[10px] opacity-30 uppercase font-black tracking-widest hover:opacity-100 transition-all">
+                        <i class="fas fa-times mr-2"></i> Cancelar e Voltar
+                    </button>
+                </div>
             </div>
         </section>
 
-        <!-- SEÇÃO DECLARAÇÃO: ESTATÍSTICAS -->
+        <!-- SEÇÃO DECLARAÇÃO: ALERTAS LITERAIS -->
         <section id="section-declaracao" class="hidden w-full max-w-xl fade-in">
             <div class="glass-card p-10 rounded-[2.5rem] flex flex-col items-center text-center">
-                <i class="fas fa-chart-pie text-4xl gold-text mb-6"></i>
-                <h2 class="text-2xl font-black uppercase mb-6">Risco vs. Segurança</h2>
-                <div class="space-y-4 w-full text-left">
-                    <div class="p-5 bg-white/5 rounded-2xl border-l-4 border-percy-gold">
-                        <p class="text-[10px] gold-text font-black mb-1 uppercase tracking-widest">Alerta</p>
-                        <p class="text-sm font-medium">92% dos erros em Declarações resultam em multas ou bloqueio do CNPJ.</p>
-                    </div>
+                <i class="fas fa-exclamation-triangle text-4xl gold-text mb-6"></i>
+                <h2 class="text-2xl font-black uppercase mb-4 leading-none">Cuidado com o Limite de R$ 81.000</h2>
+                <p class="text-sm text-white/60 mb-8 leading-relaxed">
+                    Muitos MEIs declaram o valor errado e acabam desenquadrados ou multados. A Percy garante que sua <b>DASN</b> seja enviada com precisão militar.
+                </p>
+                <div class="w-full p-6 bg-white/5 rounded-2xl mb-8 border border-white/10 text-left">
+                    <p class="text-xs font-bold mb-2">Por que fazer com a Percy?</p>
+                    <ul class="text-[11px] space-y-2 opacity-70">
+                        <li><i class="fas fa-check gold-text mr-2"></i> Conferência de teto de faturamento.</li>
+                        <li><i class="fas fa-check gold-text mr-2"></i> Prevenção de multas por atraso (R$ 50,00+).</li>
+                        <li><i class="fas fa-check gold-text mr-2"></i> Emissão do comprovante oficial na hora.</li>
+                    </ul>
                 </div>
-                <a href="https://wa.me/5521979667707?text=Quero fazer minha Declaração com segurança." class="w-full mt-10 py-6 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-black uppercase tracking-widest text-sm shadow-xl flex items-center justify-center gap-3 transition-all">
-                    <i class="fab fa-whatsapp text-2xl"></i> Garantir Declaração
+                <a href="https://wa.me/5521979667707?text=Olá Cafter! Quero fazer minha declaração anual com a segurança da Percy." class="w-full py-6 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-black uppercase tracking-widest text-sm shadow-xl flex items-center justify-center gap-3 transition-all">
+                    <i class="fab fa-whatsapp text-2xl"></i> Falar com Consultor
                 </a>
-                <button onclick="resetView()" class="mt-8 text-[10px] opacity-40 uppercase font-bold hover:opacity-100"><i class="fas fa-arrow-left mr-2"></i> Voltar ao Menu</button>
+                <button onclick="resetPortal()" class="mt-8 text-[10px] opacity-30 uppercase font-bold hover:opacity-100"><i class="fas fa-arrow-left mr-2"></i> Menu Anterior</button>
             </div>
         </section>
 
-        <!-- SEÇÃO REGULARIZAÇÃO: TABELA (FIX CONTRATE) -->
-        <section id="section-regularizacao" class="hidden w-full max-w-2xl fade-in">
-            <div class="glass-card p-10 rounded-[2.5rem] flex flex-col items-center text-center">
-                <i class="fas fa-shield-virus text-4xl gold-text mb-6"></i>
-                <h2 class="text-2xl font-black uppercase mb-8">Status do seu CNPJ</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full text-left mb-8">
-                    <div class="p-6 bg-red-500/5 border border-red-500/20 rounded-3xl">
-                        <h3 class="text-red-500 font-black mb-4 uppercase text-xs tracking-[0.2em]">Omissão Fiscal</h3>
-                        <ul class="text-[11px] space-y-3 opacity-60">
-                            <li><i class="fas fa-times-circle mr-2 text-red-500"></i> Multas Acumuladas</li>
-                            <li><i class="fas fa-times-circle mr-2 text-red-500"></i> Nome no CADIN</li>
-                        </ul>
-                    </div>
-                    <div class="p-6 bg-emerald-500/5 border border-emerald-500/20 rounded-3xl">
-                        <h3 class="text-emerald-500 font-black mb-4 uppercase text-xs tracking-[0.2em]">Soberania Percy</h3>
-                        <ul class="text-[11px] space-y-3 opacity-80">
-                            <li><i class="fas fa-check-circle mr-2 text-emerald-500"></i> Parcelamento</li>
-                            <li><i class="fas fa-check-circle mr-2 text-emerald-500"></i> CNPJ Limpo Hoje</li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- BOTÃO CORRIGIDO: Cores sólidas para legibilidade -->
-                <a href="https://wa.me/5521979667707?text=Olá Cafter! Quero regularizar meu CNPJ agora." class="w-full py-6 rounded-2xl bg-[#c5a059] text-[#0a192f] font-black uppercase tracking-widest text-sm hover:bg-white transition-all shadow-2xl flex items-center justify-center gap-3">
-                    <i class="fas fa-check-double text-xl"></i> Regularizar meu MEI Agora
+        <!-- SEÇÃO REGULARIZAÇÃO -->
+        <section id="section-regularizacao" class="hidden w-full max-w-xl fade-in">
+            <div class="glass-card p-10 rounded-[2.5rem] flex flex-col items-center text-center text-white">
+                <i class="fas fa-shield-alt text-4xl gold-text mb-6"></i>
+                <h2 class="text-2xl font-black uppercase mb-4 leading-none text-white">Seu CPF está em Risco?</h2>
+                <p class="text-sm text-white/60 mb-8 leading-relaxed">
+                    Dívidas no CNPJ do MEI passam automaticamente para o seu nome físico. Regularize agora e volte a ter crédito no mercado.
+                </p>
+                
+                <!-- BOTÃO LEGÍVEL COM ALTO CONTRASTE -->
+                <a href="https://wa.me/5521979667707?text=Olá Cafter! Preciso regularizar minhas dívidas de MEI com urgência." class="w-full py-6 rounded-2xl bg-[#c5a059] text-[#0a192f] font-black uppercase tracking-widest text-base hover:bg-white transition-all shadow-[0_10px_40px_rgba(197,160,89,0.3)] flex items-center justify-center gap-3">
+                    <i class="fas fa-check-double text-2xl"></i> Regularizar MEI Agora
                 </a>
-                <button onclick="resetView()" class="mt-8 text-[10px] opacity-40 uppercase font-bold hover:opacity-100"><i class="fas fa-arrow-left mr-2"></i> Voltar ao Menu</button>
+                
+                <button onclick="resetPortal()" class="mt-8 text-[10px] opacity-30 uppercase font-bold hover:opacity-100"><i class="fas fa-arrow-left mr-2"></i> Menu Anterior</button>
             </div>
         </section>
 
     </main>
 
     <footer class="py-12 bg-black/40 text-center border-t border-white/5 mt-auto">
-        <p class="text-[10px] uppercase font-black tracking-[0.6em] opacity-20">© 2026 PERCY CONTABILIDADE</p>
+        <p class="text-[10px] uppercase font-black tracking-[0.6em] opacity-20 italic">
+            Margem • Escala • Recorrência • Soberania
+        </p>
     </footer>
 
     <script>
+        const journeys = {
+            abertura: {
+                title: "Iniciando sua Soberania",
+                steps: [
+                    { 
+                        q: "Você estima faturar até R$ 6.750 por mês (R$ 81k/ano)?", 
+                        info: "Dica: Se você ganhar mais que isso, o MEI não é para você. Você precisa de uma LTDA.",
+                        options: ["Sim, estou dentro do limite", "Vou faturar mais"] 
+                    },
+                    { 
+                        q: "Sua atividade é permitida como MEI?", 
+                        info: "Médicos, Advogados e Engenheiros, por exemplo, não podem ser MEI.",
+                        options: ["Acho que sim", "Não tenho certeza"] 
+                    },
+                    { 
+                        q: "Quer começar com Burocracia Zero e suporte da Família Percy?", 
+                        info: "Nós cuidamos de tudo enquanto você foca no seu lucro.",
+                        options: ["Sim, quero segurança!", "Vou tentar sozinho"] 
+                    }
+                ],
+                cta: "Olá Cafter! Concluí o diagnóstico de Abertura. Quero formalizar meu negócio com suporte Percy."
+            }
+        };
+
+        let currentJourneyStep = 0;
+
+        function startJourney(type) {
+            document.getElementById('menu-principal').classList.add('hidden');
+            document.getElementById('journey-section').classList.remove('hidden');
+            renderStep(type, 0);
+        }
+
+        function renderStep(type, index) {
+            const journey = journeys[type];
+            const step = journey.steps[index];
+            const content = document.getElementById('journey-content');
+
+            // Atualiza Pílulas
+            document.querySelectorAll('.step-pill').forEach((p, i) => {
+                p.className = i <= index ? 'step-pill active' : 'step-pill';
+            });
+
+            if (index >= 3) {
+                content.innerHTML = `
+                    <h2 class="text-3xl font-black uppercase gold-text mb-4 italic">Caminho Pronto!</h2>
+                    <p class="text-sm text-white/60 mb-8 leading-relaxed">O Mestre Cafter já recebeu seu diagnóstico e aguarda você para oficializar sua jornada para a Soberania.</p>
+                    <a href="https://wa.me/5521979667707?text=${encodeURIComponent(journey.cta)}" class="w-full py-6 rounded-2xl bg-emerald-600 hover:bg-emerald-500 font-black uppercase text-base flex items-center justify-center gap-3 transition-all shadow-xl shadow-emerald-900/30">
+                        <i class="fab fa-whatsapp text-2xl"></i> Falar com Cafter Agora
+                    </a>
+                `;
+                return;
+            }
+
+            content.innerHTML = `
+                <span class="text-[10px] gold-text font-black uppercase tracking-[0.3em] block mb-4">Passo ${index + 1} de 3</span>
+                <h3 class="text-2xl font-black uppercase mb-4 leading-none">${step.q}</h3>
+                <p class="text-xs text-white/40 italic mb-8 font-medium">${step.info}</p>
+                <div class="flex flex-col gap-4">
+                    <button onclick="renderStep('${type}', ${index + 1})" class="w-full py-5 rounded-2xl btn-gold-action uppercase text-xs tracking-widest shadow-lg">${step.options[0]}</button>
+                    <button onclick="renderStep('${type}', ${index + 1})" class="w-full py-5 rounded-2xl border border-white/10 hover:bg-white/5 font-bold uppercase text-[10px] tracking-widest transition-all opacity-40 italic">${step.options[1]}</button>
+                </div>
+            `;
+        }
+
         function showSection(id) {
             document.getElementById('menu-principal').classList.add('hidden');
             document.getElementById('section-' + id).classList.remove('hidden');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-        function resetView() {
-            const sections = ['section-abertura', 'section-declaracao', 'section-regularizacao'];
-            sections.forEach(s => document.getElementById(s).classList.add('hidden'));
+
+        function resetPortal() {
+            document.getElementById('journey-section').classList.add('hidden');
+            document.getElementById('section-declaracao').classList.add('hidden');
+            document.getElementById('section-regularizacao').classList.add('hidden');
             document.getElementById('menu-principal').classList.remove('hidden');
-        }
-        function runQuiz(type) {
-            const container = document.getElementById('quiz-abertura-content');
-            const q = ["Faturamento mensal?", "Atividade permitida?", "Suporte Burocracia Zero?"];
-            function render(n) {
-                if (n > 3) {
-                    container.innerHTML = `<a href="https://wa.me/5521979667707?text=Finalizei o diagnóstico." class="w-full py-6 rounded-2xl bg-emerald-600 text-white font-black uppercase flex items-center justify-center gap-3 transition-all tracking-widest text-sm"><i class="fab fa-whatsapp text-2xl"></i> Finalizar no WhatsApp</a>`;
-                    return;
-                }
-                container.innerHTML = `<h3 class="text-xl font-bold mb-8 leading-tight">${q[n-1]}</h3><div class="flex flex-col gap-3"><button onclick="window.nextStep(${n+1})" class="w-full py-5 rounded-2xl border border-white/10 hover:border-percy-gold font-bold uppercase text-xs tracking-widest transition-all">Sim</button><button onclick="window.nextStep(${n+1})" class="w-full py-5 rounded-2xl border border-white/10 hover:border-percy-gold font-bold uppercase text-xs tracking-widest transition-all opacity-40">Não</button></div>`;
-            }
-            window.nextStep = render; render(1);
         }
     </script>
 </body>
