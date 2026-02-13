@@ -1,19 +1,21 @@
 <!DOCTYPE html>
-<html lang="pt-pt">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Portal MEI - Percy Contabilidade</title>
-    <!-- GPS: Design Premium com Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root { --percy-gold: #c5a059; --percy-dark: #0a192f; }
-        body { background-color: var(--percy-dark); color: white; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: var(--percy-dark); color: white; font-family: 'Segoe UI', sans-serif; overflow-x: hidden; }
         .gold-border { border: 1px solid var(--percy-gold); }
+        .gold-text { color: var(--percy-gold); }
         .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(197, 160, 89, 0.2); }
         .btn-hover:hover { transform: translateY(-3px); background-color: var(--percy-gold); color: var(--percy-dark); box-shadow: 0 10px 20px rgba(197, 160, 89, 0.2); }
-        .gold-text { color: var(--percy-gold); }
+        
+        .fade-in { animation: fadeIn 0.4s ease-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body class="min-h-screen flex flex-col">
@@ -25,44 +27,174 @@
         </a>
     </header>
 
-    <main class="flex-grow container mx-auto px-6 py-12 flex flex-col items-center text-center">
-        <!-- HEADLINE CRO -->
-        <h1 class="text-4xl md:text-5xl font-black gold-text uppercase mb-2 tracking-tighter">Cheguei, Sou MEI!</h1>
-        <p class="text-white/60 mb-12 uppercase tracking-[0.3em] text-[10px] font-bold italic">Formalização Expressa & Gestão de Escala</p>
+    <main id="view-port" class="flex-grow container mx-auto px-6 py-12 flex flex-col items-center">
+        
+        <!-- MENU PRINCIPAL MEI -->
+        <section id="menu-principal" class="fade-in flex flex-col items-center text-center">
+            <h1 class="text-4xl md:text-5xl font-black gold-text uppercase mb-2 tracking-tighter italic">Cheguei, Sou MEI!</h1>
+            <p class="text-white/60 mb-12 uppercase tracking-[0.3em] text-[10px] font-bold">Diagnóstico Especializado da Família Percy</p>
 
-        <!-- GRID DE SERVIÇOS (PEIXE ASSADO) -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-2xl">
-            
-            <a href="https://wa.me/5521979667707?text=Olá Cafter! Quero abrir o meu MEI agora." class="glass-card p-8 rounded-3xl btn-hover transition-all flex flex-col items-center gap-4">
-                <i class="fas fa-rocket text-3xl"></i>
-                <span class="font-black uppercase tracking-tight">Abertura de MEI</span>
-            </a>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-2xl">
+                <button onclick="showSection('abertura')" class="glass-card p-8 rounded-3xl btn-hover transition-all flex flex-col items-center gap-4 group">
+                    <i class="fas fa-rocket text-3xl gold-text"></i>
+                    <span class="font-black uppercase tracking-tight">Abertura de MEI</span>
+                </button>
 
-            <a href="https://wa.me/5521979667707?text=Olá Cafter! Preciso da minha Declaração DASN urgente." class="glass-card p-8 rounded-3xl btn-hover transition-all flex flex-col items-center gap-4">
-                <i class="fas fa-file-invoice-dollar text-3xl"></i>
-                <span class="font-black uppercase tracking-tight">Declaração Anual</span>
-            </a>
+                <button onclick="showSection('declaracao')" class="glass-card p-8 rounded-3xl btn-hover transition-all flex flex-col items-center gap-4 group">
+                    <i class="fas fa-chart-bar text-3xl gold-text"></i>
+                    <span class="font-black uppercase tracking-tight">Declaração Anual</span>
+                </button>
 
-            <a href="https://wa.me/5521979667707?text=Olá Cafter! Preciso regularizar as minhas guias DAS em atraso." class="glass-card p-8 rounded-3xl btn-hover transition-all flex flex-col items-center gap-4">
-                <i class="fas fa-shield-alt text-3xl"></i>
-                <span class="font-black uppercase tracking-tight">Regularização DAS</span>
-            </a>
+                <button onclick="showSection('regularizacao')" class="glass-card p-8 rounded-3xl btn-hover transition-all flex flex-col items-center gap-4 group">
+                    <i class="fas fa-shield-virus text-3xl gold-text"></i>
+                    <span class="font-black uppercase tracking-tight">Regularização DAS</span>
+                </button>
 
-            <a href="https://percycontabilidade.com.br" class="glass-card p-8 rounded-3xl border-white/10 hover:bg-white hover:text-percy-dark transition-all flex flex-col items-center gap-4">
-                <i class="fas fa-house-user text-3xl"></i>
-                <span class="font-black uppercase tracking-tight">Voltar à Nave Mãe</span>
-            </a>
-            
-        </div>
+                <a href="https://percycontabilidade.com.br" class="glass-card p-8 rounded-3xl border-white/10 hover:bg-white hover:text-percy-dark transition-all flex flex-col items-center gap-4 group">
+                    <i class="fas fa-house-user text-3xl"></i>
+                    <span class="font-black uppercase tracking-tight">Voltar à Nave Mãe</span>
+                </a>
+            </div>
+        </section>
 
-        <div class="mt-12">
-            <p class="text-[10px] text-white/30 uppercase font-black tracking-[0.2em]">Cafter Percy • Inteligência Contábil</p>
-        </div>
+        <!-- SEÇÃO ABERTURA: QUIZ DIAGNÓSTICO -->
+        <section id="section-abertura" class="hidden w-full max-w-xl fade-in">
+            <div class="glass-card p-10 rounded-[2.5rem] flex flex-col items-center text-center">
+                <i class="fas fa-rocket text-4xl gold-text mb-6"></i>
+                <h2 class="text-2xl font-black uppercase mb-4">Seu CNPJ está pronto?</h2>
+                
+                <div id="quiz-abertura-content">
+                    <p class="text-white/70 mb-8 leading-relaxed">Responda 3 perguntas rápidas para garantirmos que você comece com o pé direito.</p>
+                    <button onclick="runQuiz('abertura')" class="w-full py-5 rounded-2xl bg-percy-gold text-percy-dark font-black uppercase tracking-widest text-sm shadow-lg shadow-gold-500/20">Iniciar Diagnóstico</button>
+                </div>
+
+                <div class="mt-8 flex gap-4 w-full justify-center">
+                    <button onclick="resetView()" class="text-[10px] opacity-40 uppercase font-bold hover:opacity-100 transition-opacity"><i class="fas fa-arrow-left mr-2"></i> Voltar ao Menu</button>
+                    <div class="w-px h-4 bg-white/10"></div>
+                    <a href="https://wa.me/5521979667707?text=Olá Cafter! Gostaria de abrir meu MEI agora." class="text-[10px] gold-text uppercase font-bold hover:underline">Falar com Consultor</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO DECLARAÇÃO: ESTATÍSTICAS DE RISCO -->
+        <section id="section-declaracao" class="hidden w-full max-w-xl fade-in">
+            <div class="glass-card p-10 rounded-[2.5rem] flex flex-col items-center text-center">
+                <i class="fas fa-chart-pie text-4xl gold-text mb-6"></i>
+                <h2 class="text-2xl font-black uppercase mb-6">Risco vs. Segurança</h2>
+                
+                <div class="space-y-4 w-full text-left">
+                    <div class="p-5 bg-white/5 rounded-2xl border-l-4 border-percy-gold">
+                        <p class="text-[10px] gold-text font-black mb-1 uppercase tracking-widest">Alerta de Conformidade</p>
+                        <p class="text-sm font-medium">92% dos erros em Declarações DASN resultam em multas ou bloqueio do CNPJ pela Receita.</p>
+                    </div>
+                    <div class="p-5 bg-white/5 rounded-2xl border-l-4 border-percy-gold">
+                        <p class="text-[10px] gold-text font-black mb-1 uppercase tracking-widest">Expansão de Negócio</p>
+                        <p class="text-sm font-medium">Uma DASN feita com suporte especializado é seu passaporte para crédito bancário.</p>
+                    </div>
+                </div>
+
+                <a href="https://wa.me/5521979667707?text=Olá Cafter! Vi os dados da Declaração DASN e quero fazer a minha com segurança." class="w-full mt-10 py-6 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-black uppercase tracking-widest text-sm shadow-xl shadow-emerald-900/30 transition-all flex items-center justify-center gap-3 group">
+                    <i class="fab fa-whatsapp text-2xl group-hover:scale-110 transition-transform"></i> Garantir minha Declaração
+                </a>
+                
+                <button onclick="resetView()" class="mt-8 text-[10px] opacity-40 uppercase font-bold hover:opacity-100 transition-opacity"><i class="fas fa-arrow-left mr-2"></i> Voltar ao Menu MEI</button>
+            </div>
+        </section>
+
+        <!-- SEÇÃO REGULARIZAÇÃO: TABELA DE ALÍVIO -->
+        <section id="section-regularizacao" class="hidden w-full max-w-2xl fade-in">
+            <div class="glass-card p-10 rounded-[2.5rem] flex flex-col items-center text-center">
+                <i class="fas fa-shield-virus text-4xl gold-text mb-6"></i>
+                <h2 class="text-2xl font-black uppercase mb-8">Status do seu CNPJ</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full text-left mb-8">
+                    <div class="p-6 bg-red-500/5 border border-red-500/20 rounded-3xl">
+                        <h3 class="text-red-500 font-black mb-4 uppercase text-xs tracking-[0.2em]">Omissão Fiscal</h3>
+                        <ul class="text-[11px] space-y-3 opacity-60">
+                            <li><i class="fas fa-times-circle mr-2 text-red-500"></i> Multas Diárias Acumuladas</li>
+                            <li><i class="fas fa-times-circle mr-2 text-red-500"></i> Nome no CADIN (Dívida Ativa)</li>
+                            <li><i class="fas fa-times-circle mr-2 text-red-500"></i> Bloqueio de Direitos INSS</li>
+                        </ul>
+                    </div>
+                    <div class="p-6 bg-emerald-500/5 border border-emerald-500/20 rounded-3xl">
+                        <h3 class="text-emerald-500 font-black mb-4 uppercase text-xs tracking-[0.2em]">Soberania Percy</h3>
+                        <ul class="text-[11px] space-y-3 opacity-80">
+                            <li><i class="fas fa-check-circle mr-2 text-emerald-500"></i> Parcelamento Estratégico</li>
+                            <li><i class="fas fa-check-circle mr-2 text-emerald-500"></i> CNPJ Limpo Hoje</li>
+                            <li><i class="fas fa-check-circle mr-2 text-emerald-500"></i> Paz para Trabalhar e Escalar</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <a href="https://wa.me/5521979667707?text=Olá Cafter! Quero regularizar meu CNPJ e evitar multas maiores." class="w-full py-6 rounded-2xl bg-white text-percy-dark font-black uppercase tracking-widest text-sm hover:bg-percy-gold transition-all shadow-xl flex items-center justify-center gap-3">
+                    <i class="fas fa-check-double text-xl"></i> Regularizar meu MEI Agora
+                </a>
+                
+                <button onclick="resetView()" class="mt-8 text-[10px] opacity-40 uppercase font-bold hover:opacity-100 transition-opacity"><i class="fas fa-arrow-left mr-2"></i> Voltar ao Menu MEI</button>
+            </div>
+        </section>
+
     </main>
 
-    <footer class="py-8 text-center border-t border-white/5 opacity-20 text-[9px] uppercase font-bold tracking-[0.5em]">
-        © 2026 Percy Contabilidade - Negócios Inteligentes
+    <footer class="py-12 bg-black/40 text-center border-t border-white/5 mt-auto">
+        <p class="text-[10px] uppercase font-black tracking-[0.6em] opacity-20">
+            Margem • Escala • Recorrência • Soberania
+        </p>
     </footer>
 
+    <script>
+        function showSection(id) {
+            document.getElementById('menu-principal').classList.add('hidden');
+            document.getElementById('section-' + id).classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function resetView() {
+            const sections = ['section-abertura', 'section-declaracao', 'section-regularizacao'];
+            sections.forEach(s => document.getElementById(s).classList.add('hidden'));
+            document.getElementById('menu-principal').classList.remove('hidden');
+            
+            // Reset do conteúdo do Quiz de Abertura para a estaca zero
+            document.getElementById('quiz-abertura-content').innerHTML = `
+                <p class="text-white/70 mb-8 leading-relaxed">Responda 3 perguntas rápidas para garantirmos que você comece com o pé direito.</p>
+                <button onclick="runQuiz('abertura')" class="w-full py-5 rounded-2xl bg-percy-gold text-percy-dark font-black uppercase tracking-widest text-sm shadow-lg shadow-gold-500/20">Iniciar Diagnóstico</button>
+            `;
+        }
+
+        function runQuiz(type) {
+            const container = document.getElementById('quiz-abertura-content');
+            const questions = [
+                "Você já sabe qual será seu faturamento mensal estimado?",
+                "Sabe se a sua prefeitura permite essa atividade no seu endereço?",
+                "Deseja o suporte da Percy para abrir com Burocracia Zero?"
+            ];
+
+            function renderQuizStep(n) {
+                if (n > 3) {
+                    container.innerHTML = `
+                        <div class="p-6 bg-percy-gold/10 rounded-2xl mb-8 border border-percy-gold/30">
+                            <h3 class="text-xl font-bold mb-2">Diagnóstico Concluído!</h3>
+                            <p class="text-sm opacity-60 italic">Seus dados indicam que você está pronto para o próximo nível.</p>
+                        </div>
+                        <a href="https://wa.me/5521979667707?text=Olá Cafter! Finalizei meu diagnóstico de Abertura. Quero começar certo!" class="w-full py-6 rounded-2xl bg-emerald-600 hover:bg-emerald-500 font-black uppercase flex items-center justify-center gap-3 transition-all text-sm tracking-widest">
+                            <i class="fab fa-whatsapp text-2xl"></i> Finalizar no WhatsApp
+                        </a>
+                    `;
+                    return;
+                }
+                container.innerHTML = `
+                    <div class="mb-4 text-[10px] gold-text font-black tracking-widest uppercase">Análise de Perfil: Passo ${n} de 3</div>
+                    <h3 class="text-xl font-bold mb-8 leading-tight">${questions[n-1]}</h3>
+                    <div class="flex flex-col gap-3">
+                        <button onclick="window.nextStep(${n+1})" class="w-full py-5 rounded-2xl border border-white/10 hover:border-percy-gold font-bold uppercase text-xs tracking-widest transition-all">Sim, com certeza</button>
+                        <button onclick="window.nextStep(${n+1})" class="w-full py-5 rounded-2xl border border-white/10 hover:border-percy-gold font-bold uppercase text-xs tracking-widest transition-all opacity-40 italic text-[10px]">Ainda não sei ao certo</button>
+                    </div>
+                `;
+            }
+
+            window.nextStep = renderQuizStep;
+            renderQuizStep(1);
+        }
+    </script>
 </body>
 </html>
